@@ -1,0 +1,1 @@
+// Chua cac ham kiem tả giá trị đầu vào
