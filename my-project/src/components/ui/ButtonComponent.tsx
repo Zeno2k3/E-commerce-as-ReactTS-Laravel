@@ -5,7 +5,7 @@ import { menulist } from "../../assets";
 interface Props {
   text: String;
   icon?: React.ReactElement;
-  type: "link" | "primery";
+  type: "link" | "primary";
   isNoibat?: boolean;
 }
 

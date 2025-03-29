@@ -9,6 +9,7 @@ import benam1Menulist from './image/Be-trai-1-menu-05Mar.webp'
 import benam2Menulist from './image/Be-trai-2-menu-05Mar.webp'
 import benu1Menulist from './image/Be-gai-1-menu-05Mar.webp'
 import benu2Menulist from './image/Be-gai-2-menu-05Mar.webp'
+import bannerLogin from './image/Slide55-web_desktop.png'
 export {
     logo,
     logo2,
@@ -20,5 +21,6 @@ export {
     benam1Menulist,
     benam2Menulist,
     benu1Menulist,
-    benu2Menulist
+    benu2Menulist,
+    bannerLogin
 }
