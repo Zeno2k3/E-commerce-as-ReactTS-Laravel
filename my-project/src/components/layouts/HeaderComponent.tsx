@@ -1,7 +1,6 @@
 import { Box, Button, Grid2, InputBase, Paper } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import MenuDropdown from "../ui/MenuDropdown";
 import {
   benam1Menulist,
@@ -15,6 +14,7 @@ import {
 } from "../../assets";
 import { styles } from "../../utils/constants/styleGlobal";
 import React from "react";
+import LoginScreen from "../../pages/auth/LoginScreen";
 const HeaderComponent = () => {
   const [anChorEl, setAnChorEl] = React.useState<HTMLButtonElement | null>(
     null
@@ -23,7 +23,7 @@ const HeaderComponent = () => {
   const handleMouseEnter = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnChorEl(event.currentTarget);
   };
-  const handleMouseLeave = (event: React.MouseEvent<HTMLElement>) => {
+  const handleMouseLeave = () => {
     setAnChorEl(null);
   };
   const open = Boolean(anChorEl);
@@ -33,7 +33,7 @@ const HeaderComponent = () => {
       <Grid2
         container
         justifyContent={"space-around"}
-        sx={{ paddingBlock: 2.5 }}
+        sx={{ paddingBlock: 2.5 , position: "sticky", top: 0, zIndex: 100 , backgroundColor: "white"}}
       >
         <Grid2 container alignItems={"center"} spacing={1}>
           <Button variant="contained" color="secondary">
@@ -58,7 +58,7 @@ const HeaderComponent = () => {
             open={open}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            anChorEl={null}
+            anChorEl={anChorEl}
           />
           {/* <MenuDropdown
             text={"Nữ"}
@@ -140,21 +140,14 @@ const HeaderComponent = () => {
             <SearchIcon color="action" sx={{ flex: 1 }} />
             <InputBase sx={{ flex: 3 }} placeholder="Tìm Kiếm" />
           </Paper>
-          <Button
-            sx={{
-              flexDirection: "column",
-            }}
-          >
-            <AccountCircleOutlinedIcon />
-            Tài Khoản
-          </Button>
+          <LoginScreen/>
           <Button
             sx={{
               flexDirection: "column",
             }}
           >
             <StorefrontOutlinedIcon />
-            Cửa Hàng
+            Giỏ Hàng
           </Button>
         </Grid2>
       </Grid2>

@@ -19,6 +19,8 @@ import { FaFacebookF } from "react-icons/fa";
 import { BsInstagram } from "react-icons/bs";
 import { bannerLogin } from "../../assets";
 import ClearIcon from "@mui/icons-material/Clear";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import { RegiterScreen } from "./RegiterScreen";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -49,8 +51,14 @@ const LoginScreen = () => {
 
   return (
     <>
-      <Button variant="outlined" onClick={handleOpen}>
-        Open from dialog
+      <Button
+        onClick={handleOpen}
+        sx={{
+          flexDirection: "column",
+        }}
+      >
+        <AccountCircleOutlinedIcon />
+        Tài Khoản
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogContent sx={{ paddingBottom: 0 }}>
@@ -69,7 +77,7 @@ const LoginScreen = () => {
               sx={{
                 width: "100%",
                 height: "100%",
-                objectFit: "cover", 
+                objectFit: "cover",
                 borderTopLeftRadius: 10,
                 borderTopRightRadius: 10,
                 display: "block",
@@ -114,7 +122,7 @@ const LoginScreen = () => {
               children={<BsInstagram color={theme.palette.primary.main} />}
             />
           </Stack>
-          <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+          <FormControl sx={{ m: 1, width: "100%" }} variant="outlined">
             <InputLabel htmlFor="outlined-adornment-email" required>
               Email
             </InputLabel>
@@ -126,7 +134,7 @@ const LoginScreen = () => {
               label="Email"
             />
           </FormControl>
-          <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+          <FormControl sx={{ m: 1, width: "100%", p: 0 }} variant="outlined">
             <InputLabel
               htmlFor="outlined-adornment-password"
               required
@@ -157,17 +165,15 @@ const LoginScreen = () => {
               label="Password"
             />
           </FormControl>
-        </DialogContent>
-        <DialogContent sx={{ textAlign: "center", p: 0 }}>
-          <Button variant="contained" sx={{ m: 1, width: "25ch" }}>
+          <Button variant="contained" sx={{ m: 1, width: "100%" }}>
             Đăng Nhập
           </Button>
-        </DialogContent>
-        <DialogContent
-          sx={{ display: "flex", justifyContent: "space-between" }}
-        >
-          <ButtonComponent text={"Đăng Ký"} type="link" />
-          <ButtonComponent text={"Quên Mật Khẩu"} type="link" />
+          <DialogContent
+            sx={{ display: "flex", justifyContent: "space-between" }}
+          >
+            <RegiterScreen />
+            <ButtonComponent text={"Quên Mật Khẩu"} type="link" />
+          </DialogContent>
         </DialogContent>
       </Dialog>
     </>

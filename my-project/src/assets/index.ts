@@ -10,6 +10,10 @@ import benam2Menulist from './image/Be-trai-2-menu-05Mar.webp'
 import benu1Menulist from './image/Be-gai-1-menu-05Mar.webp'
 import benu2Menulist from './image/Be-gai-2-menu-05Mar.webp'
 import bannerLogin from './image/Slide55-web_desktop.png'
+import mungdaile from './image/mungdaile_topbanner_desktop-050425.webp'
+import smarttopbanner from './image/smartcasual_topbanner_desktop-040425.webp'
+import tuanlemoi from './image/tuanlehw_topbanner_desktop-080425a.webp'
+import spmoi from './image/spmoi_topbanner_desktop-030425.webp'
 export {
     logo,
     logo2,
@@ -22,5 +26,9 @@ export {
     benam2Menulist,
     benu1Menulist,
     benu2Menulist,
-    bannerLogin
+    bannerLogin,
+    mungdaile,
+    smarttopbanner,
+    tuanlemoi,
+    spmoi
 }

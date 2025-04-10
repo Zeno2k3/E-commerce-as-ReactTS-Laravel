@@ -7,6 +7,7 @@ interface Props {
   icon?: React.ReactElement;
   type: "link" | "primary";
   isNoibat?: boolean;
+  onclick?: () => void;
 }
 
 const CustomButton = styled("button")(({ theme }) => ({
@@ -25,7 +26,7 @@ const CustomButton = styled("button")(({ theme }) => ({
 }));
 
 
-const ButtonComponent: React.FC<Props> = ({isNoibat, text, icon, type }) => {
+const ButtonComponent: React.FC<Props> = ({isNoibat, text, icon, type, onclick }) => {
   return (
     <>
       {type === "link" ? (
@@ -40,7 +41,7 @@ const ButtonComponent: React.FC<Props> = ({isNoibat, text, icon, type }) => {
             {text}
             </CustomButton>
         </> ) : 
-        <CustomButton>{text}</CustomButton>
+        <CustomButton onClick={onclick}>{text}</CustomButton>
       ) : (
         <>
           {icon ?? icon}
