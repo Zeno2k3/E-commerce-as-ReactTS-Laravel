@@ -32,8 +32,8 @@ const theme = createTheme({
         MuiGrid2: {
             styleOverrides: {
               root: {
-                padding: "0px", // ✅ Bỏ padding mặc định
-                margin: "0px", // (Tùy chọn) Bỏ margin nếu có
+                padding: "0px", 
+                margin: "0px", 
               },
             },
           },

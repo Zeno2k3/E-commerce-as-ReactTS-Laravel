@@ -3,7 +3,7 @@ import React from "react";
 import { menulist } from "../../assets";
 
 interface Props {
-  text: String;
+  text: string;
   icon?: React.ReactElement;
   type: "link" | "primary";
   isNoibat?: boolean;
@@ -11,37 +11,46 @@ interface Props {
 }
 
 const CustomButton = styled("button")(({ theme }) => ({
-  backgroundColor: '#fff',
+  backgroundColor: "#fff",
   padding: 0,
   color: theme.palette.primary.main,
-  '&:hover' : {
-     color: theme.palette.secondary.main,
+  "&:hover": {
+    color: theme.palette.secondary.main,
   },
   fontFamily: theme.typography.fontFamily,
   borderWidth: 0,
   fontSize: 14,
   fontWeight: theme.typography.fontWeightMedium,
-  textAlign:'left',
-  cursor: 'pointer',
+  textAlign: "left",
+  cursor: "pointer",
 }));
 
-
-const ButtonComponent: React.FC<Props> = ({isNoibat, text, icon, type, onclick }) => {
+const ButtonComponent: React.FC<Props> = ({
+  isNoibat,
+  text,
+  icon,
+  type,
+  onclick,
+}) => {
   return (
     <>
       {type === "link" ? (
-        isNoibat ? ( 
+        isNoibat ? (
           <>
-          <CustomButton sx={{
-              display: 'flex',
-              alignItems: "center",
-              gap: 1
-          }}>
-          <img src={menulist}/>
-            {text}
+            <CustomButton
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+              }}
+            >
+              <img src={menulist} />
+              {text}
             </CustomButton>
-        </> ) : 
-        <CustomButton onClick={onclick}>{text}</CustomButton>
+          </>
+        ) : (
+          <CustomButton onClick={onclick}>{text}</CustomButton>
+        )
       ) : (
         <>
           {icon ?? icon}

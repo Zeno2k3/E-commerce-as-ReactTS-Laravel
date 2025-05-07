@@ -2,17 +2,7 @@ import { Box, Button, Grid2, InputBase, Paper } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
 import MenuDropdown from "../ui/MenuDropdown";
-import {
-  benam1Menulist,
-  benam2Menulist,
-  benu1Menulist,
-  benu2Menulist,
-  nam1Menulist,
-  nam2Menulist,
-  nu1Menulist,
-  nu2Menulist,
-} from "../../assets";
-import { styles } from "../../utils/constants/styleGlobal";
+import { nam1Menulist, nam2Menulist } from "../../assets";
 import React from "react";
 import LoginScreen from "../../pages/auth/LoginScreen";
 const HeaderComponent = () => {
@@ -27,13 +17,19 @@ const HeaderComponent = () => {
     setAnChorEl(null);
   };
   const open = Boolean(anChorEl);
-  const id = open ? "simple-popover" : undefined;
+  //const id = open ? "simple-popover" : undefined;
   return (
     <>
       <Grid2
         container
         justifyContent={"space-around"}
-        sx={{ paddingBlock: 2.5 , position: "sticky", top: 0, zIndex: 100 , backgroundColor: "white"}}
+        sx={{
+          paddingBlock: 2.5,
+          position: "sticky",
+          top: 0,
+          zIndex: 100,
+          backgroundColor: "white",
+        }}
       >
         <Grid2 container alignItems={"center"} spacing={1}>
           <Button variant="contained" color="secondary">
@@ -45,14 +41,14 @@ const HeaderComponent = () => {
               <Box
                 component={"img"}
                 src={nam1Menulist}
-                sx={{ ...styles.menuimg }}
+                sx={{ width: 207, height: 290, borderRadius: 1 }}
               />
             }
             rel2={
               <Box
                 component={"img"}
                 src={nam2Menulist}
-                sx={{ ...styles.menuimg }}
+                sx={{ width: 207, height: 290, borderRadius: 1 }}
               />
             }
             open={open}
@@ -66,14 +62,18 @@ const HeaderComponent = () => {
               <Box
                 component={"img"}
                 src={nu1Menulist}
-                sx={{ ...styles.menuimg }}
+                sx={{ width: 207, 
+        height: 290,
+        borderRadius: 1 }}
               />
             }
             rel2={
               <Box
                 component={"img"}
                 src={nu2Menulist}
-                sx={{ ...styles.menuimg }}
+                sx={{ width: 207, 
+        height: 290,
+        borderRadius: 1 }}
               />
             }
             open={open}
@@ -88,14 +88,18 @@ const HeaderComponent = () => {
               <Box
                 component={"img"}
                 src={benam1Menulist}
-                sx={{ ...styles.menuimg }}
+                sx={{ width: 207, 
+        height: 290,
+        borderRadius: 1 }}
               />
             }
             rel2={
               <Box
                 component={"img"}
                 src={benam2Menulist}
-                sx={{ ...styles.menuimg }}
+                sx={{ width: 207, 
+        height: 290,
+        borderRadius: 1 }}
               />
             }
             open={open}
@@ -109,14 +113,18 @@ const HeaderComponent = () => {
               <Box
                 component={"img"}
                 src={benu1Menulist}
-                sx={{ ...styles.menuimg }}
+                sx={{ width: 207, 
+        height: 290,
+        borderRadius: 1 }}
               />
             }
             rel2={
               <Box
                 component={"img"}
                 src={benu2Menulist}
-                sx={{ ...styles.menuimg }}
+                sx={{ width: 207, 
+        height: 290,
+        borderRadius: 1 }}
               />
             }
             open={open}
@@ -140,7 +148,7 @@ const HeaderComponent = () => {
             <SearchIcon color="action" sx={{ flex: 1 }} />
             <InputBase sx={{ flex: 3 }} placeholder="Tìm Kiếm" />
           </Paper>
-          <LoginScreen/>
+          <LoginScreen />
           <Button
             sx={{
               flexDirection: "column",

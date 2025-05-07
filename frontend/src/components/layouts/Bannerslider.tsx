@@ -25,7 +25,7 @@ const BannerSlider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % banners.length);
-    }, 5000);
+    }, 9000);
     return () => clearInterval(interval);
   }, []);
 
@@ -37,9 +37,10 @@ const BannerSlider = () => {
         width: "100%",
         height: 620,
         backgroundImage: `url(${currentBanner.image})`,
+        transition: 'all ease-in-out 0.6s',
         backgroundSize: "cover",
-        backgroundPosition: "center",
         position: "relative",
+        backgroundPosition: "center",
         color: "white",
         display: "flex",
         alignItems: "center",
@@ -55,6 +56,7 @@ const BannerSlider = () => {
           justifyContent: "space-between",
         }}
       >
+        {/*các nút điều hướng bên trái và bên phải */}
         <IconButton
           sx={{
             backgroundColor: "rgba(255, 255, 255, 0.3)",
