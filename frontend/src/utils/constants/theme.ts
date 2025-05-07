@@ -1,22 +1,20 @@
 import { createTheme } from "@mui/material";
-import red from "@mui/material/colors/red";
-
 
 const theme = createTheme({
-    palette:{
+    palette: {
         primary: {
             main: "#333F48"
         },
         secondary: {
-            main: red[500]
+            main: "#da291c"
         },
-        text: { 
-           secondary: "#333F48"
+        text: {
+            secondary: "#333F48"
         }
     },
     typography: {
-        fontFamily: ['Montserrat','sans-serif'].join(','),
-        allVariants:{
+        fontFamily: ['Montserrat', 'sans-serif'].join(','),
+        allVariants: {
             color: "#333f48",
             fontSize: 14
         }
@@ -31,12 +29,12 @@ const theme = createTheme({
         },
         MuiGrid2: {
             styleOverrides: {
-              root: {
-                padding: "0px", 
-                margin: "0px", 
-              },
+                root: {
+                    padding: "0px",
+                    margin: "0px",
+                },
             },
-          },
+        },
     }
 })
 
