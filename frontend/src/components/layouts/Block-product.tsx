@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 
 import ProductItem from "../../components/ui/Product-item";
 
@@ -8,11 +8,13 @@ import sb128 from "../../assets/imgae-color/sb128.webp";
 import image1 from "../../assets/image/6ot25s003-sb128-thumba.webp";
 import image2 from "../../assets/image/6ot25s003-sm090-thumb.webp";
 import React from "react";
+import theme from "../../utils/constants/theme";
 
 interface BlockProductProps {
   title?: string;
   banner: string;
   onClick?: () => void;
+  onClickTab?: () => void;
 }
 
 const Products = [
@@ -151,15 +153,66 @@ const Products = [
       },
     ],
   },
+  {
+    id: 6,
+    masp: "3OT25S001-SA407",
+    name: "Áo khoác da bò",
+    price: "299.000 đ",
+    priceSale: "311.000 đ",
+    percent: "14%",
+    colorVariants: [
+      {
+        image: image1,
+        colorImage: sab405,
+        Sizes: ["S", "L", "XL", "XXL"],
+      },
+      {
+        image: image2,
+        colorImage: sb128,
+        Sizes: ["S", "L", "XL", "XXL"],
+      },
+      {
+        image: image2,
+        colorImage: sb128,
+        Sizes: ["S", "L", "XL", "XXL"],
+      },
+    ],
+  },
+  {
+    id: 7,
+    masp: "3OT25S001-SA407",
+    name: "Áo khoác da bò",
+    price: "299.000 đ",
+    priceSale: "311.000 đ",
+    percent: "14%",
+    colorVariants: [
+      {
+        image: image1,
+        colorImage: sab405,
+      },
+      {
+        image: image2,
+        colorImage: sb128,
+      },
+      {
+        image: image2,
+        colorImage: sb128,
+      },
+    ],
+  },
 ];
 
 const BlockProduct: React.FC<BlockProductProps> = ({
   title,
   banner,
   onClick,
+  onClickTab,
 }) => {
   return (
-    <Box className={"block-product"} sx={{ padding: "20px 146.077px" }}>
+    <Box
+      className={"block-product"}
+      sx={{ padding: "20px 146.077px", position: "relative" }}
+    >
       <Typography
         sx={{
           m: "0px -8px",
@@ -214,6 +267,22 @@ const BlockProduct: React.FC<BlockProductProps> = ({
           ))}
         </Box>
       </Box>
+      <Button
+        onClick={onClickTab}
+        variant={"outlined"}
+        sx={{
+          position: "absolute",
+          left: "46%",
+          bottom: "20px",
+          borderWidth: 1,
+          p: "8px 16px",
+          fontWeight: 700,
+          color: theme.palette.secondary.main,
+          borderColor: theme.palette.secondary.main,
+        }}
+      >
+        Xem tất cả
+      </Button>
     </Box>
   );
 };
