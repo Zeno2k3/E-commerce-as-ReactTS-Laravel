@@ -211,7 +211,7 @@ const BlockProduct: React.FC<BlockProductProps> = ({
   return (
     <Box
       className={"block-product"}
-      sx={{ padding: "20px 146.077px", position: "relative" }}
+      sx={{ padding: "20px 7.7%", position: "relative" }}
     >
       <Typography
         sx={{

@@ -14,6 +14,7 @@ import mungdaile from './image/mungdaile_topbanner_desktop-050425.webp'
 import smarttopbanner from './image/smartcasual_topbanner_desktop-040425.webp'
 import tuanlemoi from './image/tuanlehw_topbanner_desktop-080425a.webp'
 import spmoi from './image/spmoi_topbanner_desktop-030425.webp'
+
 export {
     logo,
     logo2,
