@@ -15,7 +15,6 @@ const Homepage = () => {
     <>
       <HeaderComponent2 />
       <BannerSlider />
-      <Divider />
       <ContainerBlock isdivider={false} />
       <Divider flexItem />
       <BlockVoucher />
