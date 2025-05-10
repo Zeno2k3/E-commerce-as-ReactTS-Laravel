@@ -5,6 +5,7 @@ import MenuDropdown from "../ui/MenuDropdown";
 import { nam1Menulist, nam2Menulist } from "../../assets";
 import React from "react";
 import LoginScreen from "../../pages/auth/LoginScreen";
+
 const HeaderComponent = () => {
   const [anChorEl, setAnChorEl] = React.useState<HTMLButtonElement | null>(
     null
@@ -131,7 +132,6 @@ const HeaderComponent = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           />  */}
-          <Button variant="text">Apollos</Button>
         </Grid2>
         <Grid2 container spacing={4} alignItems={"center"}>
           <Paper

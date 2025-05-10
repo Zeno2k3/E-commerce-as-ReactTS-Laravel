@@ -44,8 +44,9 @@ const BlockVoucher = () => {
           flexWrap: "wrap",
         }}
       >
-        {ListVouchers.map((voucher) => (
+        {ListVouchers.map((voucher, index) => (
           <VoucherItem
+            key={index}
             name={voucher.name}
             content={voucher.content}
             HSD={voucher.hsd}

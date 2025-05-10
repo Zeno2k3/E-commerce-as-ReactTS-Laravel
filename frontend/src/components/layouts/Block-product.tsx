@@ -254,8 +254,9 @@ const BlockProduct: React.FC<BlockProductProps> = ({
             margin: "0px -4px",
           }}
         >
-          {Products.map((product) => (
+          {Products.map((product, index) => (
             <ProductItem
+              key={index}
               sxDiv={{ margin: "0px 0px 60px", padding: "0px 12px" }}
               sxImg={{ width: "379px" }}
               name={product.name}

@@ -42,7 +42,7 @@ const ContainerBlock: React.FC<props> = ({ isdivider }) => {
       }}
     >
       {Containers.map((container, index: number) => (
-        <>
+        <div key={index}>
           <Grid2 container display={"flex"} sx={{ alignItems: "flex-start" }}>
             <Grid2 size={2}>
               <Box
@@ -53,7 +53,7 @@ const ContainerBlock: React.FC<props> = ({ isdivider }) => {
             </Grid2>
             <Grid2 size={8}>
               <Stack sx={{ width: "300px" }}>
-                <Typography sx={{ fontWeight: 700 }}>
+                <Typography sx={{ fontWeight: 700, fontSize: "17px" }}>
                   {container.title}
                 </Typography>
                 <Typography sx={{ fontWeight: 500, color: "#73727d" }}>
@@ -65,7 +65,7 @@ const ContainerBlock: React.FC<props> = ({ isdivider }) => {
           {isdivider && index != 2 && (
             <Divider orientation="vertical" flexItem />
           )}
-        </>
+        </div>
       ))}
     </Box>
   );

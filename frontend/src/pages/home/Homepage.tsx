@@ -1,7 +1,6 @@
 import { Divider } from "@mui/material";
 import {
   FooterComponent,
-  HeaderComponent,
   BannerSlider,
   BlockProductComponent,
 } from "../../components";
@@ -9,13 +8,14 @@ import {
 import image from "../../assets/image/chongnang_blockhomepage_desktop-140425.webp";
 import ContainerBlock from "../../components/layouts/Container-block";
 import BlockVoucher from "../../components/home/Block-voucher";
+import HeaderComponent2 from "../../components/layouts/HeaderComponent2";
 
 const Homepage = () => {
   return (
     <>
-      <HeaderComponent />
+      <HeaderComponent2 />
       <BannerSlider />
-      <Divider variant="middle" />
+      <Divider />
       <ContainerBlock isdivider={false} />
       <Divider flexItem />
       <BlockVoucher />

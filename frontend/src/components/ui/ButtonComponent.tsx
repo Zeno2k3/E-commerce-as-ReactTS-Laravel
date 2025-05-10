@@ -1,11 +1,13 @@
-import { Button, styled } from "@mui/material";
+import { Button, styled, SxProps } from "@mui/material";
 import React from "react";
 import { menulist } from "../../assets";
+import { Theme } from "@emotion/react";
 
 interface Props {
   text: string;
   icon?: React.ReactElement;
   type: "link" | "primary";
+  sx?: SxProps<Theme>;
   isNoibat?: boolean;
   onclick?: () => void;
 }
@@ -30,6 +32,7 @@ const ButtonComponent: React.FC<Props> = ({
   text,
   icon,
   type,
+  sx,
   onclick,
 }) => {
   return (
@@ -42,6 +45,7 @@ const ButtonComponent: React.FC<Props> = ({
                 display: "flex",
                 alignItems: "center",
                 gap: 1,
+                ...sx,
               }}
             >
               <img src={menulist} />
