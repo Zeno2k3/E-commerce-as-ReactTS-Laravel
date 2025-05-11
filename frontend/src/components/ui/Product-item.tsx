@@ -51,7 +51,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
           src={image}
           sx={{
             ...sxImg,
-            borderRadius: "4px",
+            borderRadius: "2px",
             cursor: "pointer",
           }}
         />

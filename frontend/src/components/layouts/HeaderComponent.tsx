@@ -202,7 +202,7 @@ const HeaderComponent2 = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            p: " 16px 7.8%",
+            p: "16px 7.3%",
             flexDirection: "row",
           }}
         >
@@ -218,7 +218,7 @@ const HeaderComponent2 = () => {
                 component={"img"}
                 src={logo}
                 width={"70px"}
-                mr={"24px"}
+                mr={"12px"}
                 title="HomePage"
               />
             </Link>

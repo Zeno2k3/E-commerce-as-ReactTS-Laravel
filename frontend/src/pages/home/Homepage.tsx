@@ -6,7 +6,7 @@ import {
 } from "../../components";
 
 import image from "../../assets/image/chongnang_blockhomepage_desktop-140425.webp";
-import ContainerBlock from "../../components/layouts/Container-block";
+import ContainerBlock from "../../components/layouts/Block-container";
 import BlockVoucher from "../../components/home/Block-voucher";
 import HeaderComponent from "../../components/layouts/HeaderComponent";
 import BlockCollection from "../../components/home/Block-collection";
