@@ -25,6 +25,8 @@ import iconCuaHang from "../../assets/svg/icon-cuahang.svg";
 import iconTaiKhoan from "../../assets/svg/icon-taikhoan.svg";
 import iconGioHang from "../../assets/svg/icon-giohang.svg";
 import iconSearch from "../../assets/svg/icon-search.svg";
+import { Link } from "react-router-dom";
+import theme from "../../utils/constants/theme";
 
 const Pages = [
   {
@@ -43,32 +45,8 @@ const Pages = [
 
 const ListMenu = [
   {
-    name: "Nam",
-    hangmoi: ["Hàng mới về", "Áo phong cách", "disney"],
-    noibat: ["Giá tốt"],
-    dmsp: [
-      "Áo phông/ Áo thun",
-      "Áo polo ",
-      "Áo sơ mi & Áo kiểu ",
-      "Áo chống nắng",
-      "Canifa Active/ Quần áo thể thao",
-      "Quần soóc/ Quần short",
-      "Quần dài & Quần Jean",
-      "Quần áo nỉ",
-      "Quần áo nỉ",
-      "Quần áo mặc nhà/ Đồ ngủ",
-      "Áo khoác & Giữ nhiệt",
-      "Áo len",
-      "Bộ quần áo",
-      "Đồ lót",
-      "Tất/Vớ",
-    ],
-    phukien: ["Hàng mới về", "Áo phong cách", "disney"],
-    image1: nam1Menulist,
-    image2: nam2Menulist,
-  },
-  {
     name: "Nữ",
+    url: "/women",
     hangmoi: ["Hàng mới về", "Áo phong cách", "disney"],
     noibat: ["Giá tốt"],
     dmsp: [
@@ -93,7 +71,34 @@ const ListMenu = [
     image2: nu2Menulist,
   },
   {
+    name: "Nam",
+    url: "/men",
+    hangmoi: ["Hàng mới về", "Áo phong cách", "disney"],
+    noibat: ["Giá tốt"],
+    dmsp: [
+      "Áo phông/ Áo thun",
+      "Áo polo ",
+      "Áo sơ mi & Áo kiểu ",
+      "Áo chống nắng",
+      "Canifa Active/ Quần áo thể thao",
+      "Quần soóc/ Quần short",
+      "Quần dài & Quần Jean",
+      "Quần áo nỉ",
+      "Quần áo nỉ",
+      "Quần áo mặc nhà/ Đồ ngủ",
+      "Áo khoác & Giữ nhiệt",
+      "Áo len",
+      "Bộ quần áo",
+      "Đồ lót",
+      "Tất/Vớ",
+    ],
+    phukien: ["Hàng mới về", "Áo phong cách", "disney"],
+    image1: nam1Menulist,
+    image2: nam2Menulist,
+  },
+  {
     name: "Bé Gái",
+    url: "/girl",
     hangmoi: ["Hàng mới về", "Áo phong cách", "disney"],
     noibat: ["Giá tốt"],
     dmsp: [
@@ -119,6 +124,7 @@ const ListMenu = [
   },
   {
     name: "Bé Trai",
+    url: "/boy",
     hangmoi: ["Hàng mới về", "Áo phong cách", "disney"],
     noibat: ["Giá tốt"],
     dmsp: [
@@ -207,13 +213,15 @@ const HeaderComponent2 = () => {
               alignItems: "center",
             }}
           >
-            <Box
-              component={"img"}
-              src={logo}
-              width={"70px"}
-              mr={"12px"}
-              title="HomePage"
-            />
+            <Link to={"/"}>
+              <Box
+                component={"img"}
+                src={logo}
+                width={"70px"}
+                mr={"24px"}
+                title="HomePage"
+              />
+            </Link>
             {ListMenu.map((menu, index) => (
               <Box key={index}>
                 <Button
@@ -224,11 +232,18 @@ const HeaderComponent2 = () => {
                     fontSize: 16,
                     fontWeight: 700,
                     textTransform: "uppercase",
-                    p: "0px 16px",
-                    mx: "8px",
+                    ml: "8px",
                   }}
                 >
-                  {menu.name}
+                  <Link
+                    to={menu.url}
+                    style={{
+                      color: theme.palette.primary.main,
+                      textDecoration: "none",
+                    }}
+                  >
+                    {menu.name}
+                  </Link>
                 </Button>
                 {openIndex == index && (
                   <Box onMouseLeave={() => toggleMenu(index)}>
