@@ -219,7 +219,6 @@ const BlockProduct: React.FC<BlockProductProps> = ({
           fontWeight: 700,
           fontSize: 20,
           pb: 1,
-          textTransform: "uppercase",
         }}
       >
         {title}

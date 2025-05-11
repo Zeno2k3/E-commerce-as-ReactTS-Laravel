@@ -8,17 +8,19 @@ import {
 import image from "../../assets/image/chongnang_blockhomepage_desktop-140425.webp";
 import ContainerBlock from "../../components/layouts/Container-block";
 import BlockVoucher from "../../components/home/Block-voucher";
-import HeaderComponent2 from "../../components/layouts/HeaderComponent2";
+import HeaderComponent from "../../components/layouts/HeaderComponent";
+import BlockCollection from "../../components/home/Block-collection";
 
 const Homepage = () => {
   return (
     <>
-      <HeaderComponent2 />
+      <HeaderComponent />
       <BannerSlider />
       <ContainerBlock isdivider={false} />
       <Divider flexItem />
       <BlockVoucher />
-      <BlockProductComponent title={"áo chống nắng"} banner={image} />
+      <BlockCollection />
+      <BlockProductComponent title={"Áo chống nắng"} banner={image} />
       <FooterComponent />
     </>
   );

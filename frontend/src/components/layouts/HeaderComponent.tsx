@@ -1,166 +1,337 @@
-import { Box, Button, Grid2, InputBase, Paper } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
-import MenuDropdown from "../ui/MenuDropdown";
-import { nam1Menulist, nam2Menulist } from "../../assets";
-import React from "react";
-import LoginScreen from "../../pages/auth/LoginScreen";
+import MenuContent from "../ui/MenuContent";
 
-const HeaderComponent = () => {
-  const [anChorEl, setAnChorEl] = React.useState<HTMLButtonElement | null>(
-    null
-  );
+import {
+  nam1Menulist,
+  nam2Menulist,
+  nu1Menulist,
+  nu2Menulist,
+  benam1Menulist,
+  benam2Menulist,
+  benu1Menulist,
+  benu2Menulist,
+} from "../../assets";
+import {
+  Box,
+  Button,
+  Divider,
+  InputBase,
+  Stack,
+  Typography,
+} from "@mui/material";
+import { useRef, useEffect, useState } from "react";
 
-  const handleMouseEnter = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnChorEl(event.currentTarget);
+import logo from "../../assets/image/logo.png";
+import iconCuaHang from "../../assets/svg/icon-cuahang.svg";
+import iconTaiKhoan from "../../assets/svg/icon-taikhoan.svg";
+import iconGioHang from "../../assets/svg/icon-giohang.svg";
+import iconSearch from "../../assets/svg/icon-search.svg";
+
+const Pages = [
+  {
+    name: "Cửu Hàng",
+    image: iconCuaHang,
+  },
+  {
+    name: "Tài Khoản",
+    image: iconTaiKhoan,
+  },
+  {
+    name: "Giỏ Hàng",
+    image: iconGioHang,
+  },
+];
+
+const ListMenu = [
+  {
+    name: "Nam",
+    hangmoi: ["Hàng mới về", "Áo phong cách", "disney"],
+    noibat: ["Giá tốt"],
+    dmsp: [
+      "Áo phông/ Áo thun",
+      "Áo polo ",
+      "Áo sơ mi & Áo kiểu ",
+      "Áo chống nắng",
+      "Canifa Active/ Quần áo thể thao",
+      "Quần soóc/ Quần short",
+      "Quần dài & Quần Jean",
+      "Quần áo nỉ",
+      "Quần áo nỉ",
+      "Quần áo mặc nhà/ Đồ ngủ",
+      "Áo khoác & Giữ nhiệt",
+      "Áo len",
+      "Bộ quần áo",
+      "Đồ lót",
+      "Tất/Vớ",
+    ],
+    phukien: ["Hàng mới về", "Áo phong cách", "disney"],
+    image1: nam1Menulist,
+    image2: nam2Menulist,
+  },
+  {
+    name: "Nữ",
+    hangmoi: ["Hàng mới về", "Áo phong cách", "disney"],
+    noibat: ["Giá tốt"],
+    dmsp: [
+      "Áo phông/ Áo thun",
+      "Áo polo ",
+      "Áo sơ mi & Áo kiểu ",
+      "Áo chống nắng",
+      "Canifa Active/ Quần áo thể thao",
+      "Quần soóc/ Quần short",
+      "Quần dài & Quần Jean",
+      "Quần áo nỉ",
+      "Quần áo nỉ",
+      "Quần áo mặc nhà/ Đồ ngủ",
+      "Áo khoác & Giữ nhiệt",
+      "Áo len",
+      "Bộ quần áo",
+      "Đồ lót",
+      "Tất/Vớ",
+    ],
+    phukien: ["Hàng mới về", "Áo phong cách", "disney"],
+    image1: nu1Menulist,
+    image2: nu2Menulist,
+  },
+  {
+    name: "Bé Gái",
+    hangmoi: ["Hàng mới về", "Áo phong cách", "disney"],
+    noibat: ["Giá tốt"],
+    dmsp: [
+      "Áo phông/ Áo thun",
+      "Áo polo ",
+      "Áo sơ mi & Áo kiểu ",
+      "Áo chống nắng",
+      "Canifa Active/ Quần áo thể thao",
+      "Quần soóc/ Quần short",
+      "Quần dài & Quần Jean",
+      "Quần áo nỉ",
+      "Quần áo nỉ",
+      "Quần áo mặc nhà/ Đồ ngủ",
+      "Áo khoác & Giữ nhiệt",
+      "Áo len",
+      "Bộ quần áo",
+      "Đồ lót",
+      "Tất/Vớ",
+    ],
+    phukien: ["Hàng mới về", "Áo phong cách", "disney"],
+    image1: benu1Menulist,
+    image2: benu2Menulist,
+  },
+  {
+    name: "Bé Trai",
+    hangmoi: ["Hàng mới về", "Áo phong cách", "disney"],
+    noibat: ["Giá tốt"],
+    dmsp: [
+      "Áo phông/ Áo thun",
+      "Áo polo ",
+      "Áo sơ mi & Áo kiểu ",
+      "Áo chống nắng",
+      "Canifa Active/ Quần áo thể thao",
+      "Quần soóc/ Quần short",
+      "Quần dài & Quần Jean",
+      "Quần áo nỉ",
+      "Quần áo nỉ",
+      "Quần áo mặc nhà/ Đồ ngủ",
+      "Áo khoác & Giữ nhiệt",
+      "Áo len",
+      "Bộ quần áo",
+      "Đồ lót",
+      "Tất/Vớ",
+    ],
+    phukien: ["Hàng mới về", "Áo phong cách", "disney"],
+    image1: benam1Menulist,
+    image2: benam2Menulist,
+  },
+];
+
+const ChuongTringDB = ["Sản Phẩm Mới", "Canifas"];
+
+const HeaderComponent2 = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const toggleMenu = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
   };
-  const handleMouseLeave = () => {
-    setAnChorEl(null);
-  };
-  const open = Boolean(anChorEl);
-  //const id = open ? "simple-popover" : undefined;
+
+  const headerRef = useRef<HTMLDivElement>(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  useEffect(() => {
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.offsetHeight);
+    }
+  }, [headerHeight]);
+
   return (
     <>
-      <Grid2
-        container
-        justifyContent={"space-around"}
+      {openIndex != null && (
+        <Box
+          sx={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            zIndex: 40,
+          }}
+        />
+      )}
+      <Box
+        ref={headerRef}
+        className={"header-container"}
         sx={{
-          paddingBlock: 2.5,
-          position: "sticky",
+          width: "100vw",
+          display: "flex",
+          position: "fixed",
           top: 0,
+          left: 0,
+          right: 0,
           zIndex: 100,
-          backgroundColor: "white",
+          backgroundColor: "#fff",
+          flexDirection: "column",
         }}
       >
-        <Grid2 container alignItems={"center"} spacing={1}>
-          <Button variant="contained" color="secondary">
-            APOLLO
-          </Button>
-          <MenuDropdown
-            text={"Nam"}
-            rel1={
-              <Box
-                component={"img"}
-                src={nam1Menulist}
-                sx={{ width: 207, height: 290, borderRadius: 1 }}
-              />
-            }
-            rel2={
-              <Box
-                component={"img"}
-                src={nam2Menulist}
-                sx={{ width: 207, height: 290, borderRadius: 1 }}
-              />
-            }
-            open={open}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            anChorEl={anChorEl}
-          />
-          {/* <MenuDropdown
-            text={"Nữ"}
-            rel1={
-              <Box
-                component={"img"}
-                src={nu1Menulist}
-                sx={{ width: 207, 
-        height: 290,
-        borderRadius: 1 }}
-              />
-            }
-            rel2={
-              <Box
-                component={"img"}
-                src={nu2Menulist}
-                sx={{ width: 207, 
-        height: 290,
-        borderRadius: 1 }}
-              />
-            }
-            open={open}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          
-            
-          />
-          <MenuDropdown
-            text={"Bé Trai"}
-            rel1={
-              <Box
-                component={"img"}
-                src={benam1Menulist}
-                sx={{ width: 207, 
-        height: 290,
-        borderRadius: 1 }}
-              />
-            }
-            rel2={
-              <Box
-                component={"img"}
-                src={benam2Menulist}
-                sx={{ width: 207, 
-        height: 290,
-        borderRadius: 1 }}
-              />
-            }
-            open={open}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            
-          />
-          <MenuDropdown
-            text={"Bé Gái"}
-            rel1={
-              <Box
-                component={"img"}
-                src={benu1Menulist}
-                sx={{ width: 207, 
-        height: 290,
-        borderRadius: 1 }}
-              />
-            }
-            rel2={
-              <Box
-                component={"img"}
-                src={benu2Menulist}
-                sx={{ width: 207, 
-        height: 290,
-        borderRadius: 1 }}
-              />
-            }
-            open={open}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          />  */}
-        </Grid2>
-        <Grid2 container spacing={4} alignItems={"center"}>
-          <Paper
-            variant="outlined"
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            p: " 16px 7.8%",
+            flexDirection: "row",
+          }}
+        >
+          <Box
+            className="header-link-product"
             sx={{
               display: "flex",
-              justifyContent: "center",
               alignItems: "center",
-              borderRadius: 40,
-              width: 280,
-              height: 40,
             }}
           >
-            <SearchIcon color="action" sx={{ flex: 1 }} />
-            <InputBase sx={{ flex: 3 }} placeholder="Tìm Kiếm" />
-          </Paper>
-          <LoginScreen />
-          <Button
+            <Box
+              component={"img"}
+              src={logo}
+              width={"70px"}
+              mr={"12px"}
+              title="HomePage"
+            />
+            {ListMenu.map((menu, index) => (
+              <Box key={index}>
+                <Button
+                  className="menu-link"
+                  variant="text"
+                  onMouseEnter={() => toggleMenu(index)}
+                  sx={{
+                    fontSize: 16,
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    p: "0px 16px",
+                    mx: "8px",
+                  }}
+                >
+                  {menu.name}
+                </Button>
+                {openIndex == index && (
+                  <Box onMouseLeave={() => toggleMenu(index)}>
+                    <MenuContent
+                      sxMenu={{
+                        display: "flex",
+                        zIndex: 90,
+                        position: "fixed",
+                        width: "100vw",
+                        top: `${headerHeight}px`,
+                        left: 0,
+                        right: 0,
+                      }}
+                      MenuList={{
+                        HangMoi: menu.hangmoi,
+                        NoiBat: menu.noibat,
+                        DanhMucSanPham: menu.dmsp,
+                        PhuKien: menu.phukien,
+                        imageMenu1: menu.image1,
+                        imageMenu2: menu.image2,
+                      }}
+                    />
+                  </Box>
+                )}
+              </Box>
+            ))}
+            {ChuongTringDB.map((chuongtring) => (
+              <Button
+                variant="text"
+                sx={{
+                  fontSize: 16,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  p: "0px 16px",
+                  mx: "8px",
+                }}
+              >
+                {chuongtring}
+              </Button>
+            ))}
+          </Box>
+          <Box
+            className="header-link-page"
             sx={{
-              flexDirection: "column",
+              display: "flex",
+              alignItems: "center",
+              gap: 3,
             }}
           >
-            <StorefrontOutlinedIcon />
-            Giỏ Hàng
-          </Button>
-        </Grid2>
-      </Grid2>
+            <Box
+              sx={{
+                display: "flex",
+                borderColor: "#edf1f5",
+                width: "280px",
+                height: "40px",
+                px: "24px",
+                borderStyle: "solid",
+                borderWidth: 1,
+                borderRadius: "40px",
+                fontSize: "13px",
+              }}
+            >
+              <Box component={"img"} src={iconSearch} width={"24px"} />
+              <InputBase
+                placeholder="Tìm Kiếm"
+                sx={{ pl: "12px", color: "#000" }}
+              />
+            </Box>
+            {Pages.map((page, index) => (
+              <Stack
+                key={index}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  cursor: "pointer",
+                }}
+              >
+                <Box
+                  component={"img"}
+                  src={page.image}
+                  sx={{
+                    width: "24px",
+                    mt: "6px",
+                  }}
+                />
+                <Typography
+                  sx={{
+                    fontWeight: 500,
+                    fontSize: "13px",
+                  }}
+                >
+                  {page.name}
+                </Typography>
+              </Stack>
+            ))}
+          </Box>
+        </Box>
+        <Divider variant={"fullWidth"} />
+      </Box>
+      <Box sx={{ height: `${headerHeight}px` }} />
     </>
   );
 };
 
-export default HeaderComponent;
+export default HeaderComponent2;
