@@ -1,4 +1,4 @@
-import { Button, styled, SxProps } from "@mui/material";
+import { Box, Button, styled, SxProps } from "@mui/material";
 import React from "react";
 import { menulist } from "../../assets";
 import { Theme } from "@emotion/react";
@@ -53,7 +53,10 @@ const ButtonComponent: React.FC<Props> = ({
             </CustomButton>
           </>
         ) : (
-          <CustomButton onClick={onclick}>{text}</CustomButton>
+          <>
+            <Box sx={{ width: "28px" }} />
+            <CustomButton onClick={onclick}>{text}</CustomButton>
+          </>
         )
       ) : (
         <>

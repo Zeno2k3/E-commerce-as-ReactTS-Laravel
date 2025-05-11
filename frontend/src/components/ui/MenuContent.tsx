@@ -40,6 +40,7 @@ const MenuContent: React.FC<MenuProps> = ({ MenuList, sxMenu }) => {
           <Typography
             sx={{
               fontWeight: 700,
+              ml: "28px",
             }}
           >
             Hàng Mới
@@ -50,6 +51,7 @@ const MenuContent: React.FC<MenuProps> = ({ MenuList, sxMenu }) => {
               sx={{
                 display: "flex",
                 alignItems: "center",
+                width: "100%",
               }}
             >
               <ButtonComponent text={hangmoi} type={"link"} />
@@ -60,6 +62,7 @@ const MenuContent: React.FC<MenuProps> = ({ MenuList, sxMenu }) => {
           <Typography
             sx={{
               fontWeight: 700,
+              ml: "28px",
             }}
           >
             Nổi bật
@@ -68,8 +71,7 @@ const MenuContent: React.FC<MenuProps> = ({ MenuList, sxMenu }) => {
             <Box
               key={index}
               sx={{
-                m: "0px 0px 12px",
-                width: "50%",
+                width: "100%",
                 display: "flex",
               }}
             >
@@ -85,7 +87,6 @@ const MenuContent: React.FC<MenuProps> = ({ MenuList, sxMenu }) => {
           display: "flex",
           flexDirection: "column",
           p: "36px 30px 46px",
-          ml: "32px",
           width: "576px",
           height: "372px",
           gap: 1.5,
@@ -94,6 +95,7 @@ const MenuContent: React.FC<MenuProps> = ({ MenuList, sxMenu }) => {
         <Typography
           sx={{
             fontWeight: 700,
+            ml: "28px",
           }}
         >
           Danh Mục Sản Phẩm
@@ -102,10 +104,12 @@ const MenuContent: React.FC<MenuProps> = ({ MenuList, sxMenu }) => {
           sx={{
             display: "flex",
             flexWrap: "wrap",
+            width: "100%",
           }}
         >
           {MenuList.DanhMucSanPham.map((danhmuc: string, index) => (
             <Box
+              className="menu-item"
               key={index}
               sx={{
                 m: "0px 0px 12px",
@@ -124,23 +128,33 @@ const MenuContent: React.FC<MenuProps> = ({ MenuList, sxMenu }) => {
       </Box>
       <Divider orientation="vertical" flexItem />
       <Box
-        className={"submenu-content-mid"}
+        className={"submenu-content-right"}
         sx={{
           p: "36px 0px 46px",
           display: "flex",
+          mx: "32px",
           gap: 2,
         }}
       >
-        <Stack sx={{ m: "0px 60px", gap: 1.5 }}>
+        <Stack
+          sx={{
+            width: "200px",
+            mr: "48px",
+            gap: 1.5,
+            display: "flex",
+          }}
+        >
           <Typography
             sx={{
               fontWeight: 700,
+              width: "50%",
+              ml: "28px",
             }}
           >
             Phụ Kiện
           </Typography>
           {MenuList.PhuKien.map((phukien: string, index) => (
-            <Box key={index}>
+            <Box key={index} sx={{ width: "90%", display: "flex" }}>
               <ButtonComponent text={phukien} type={"link"} />
             </Box>
           ))}
