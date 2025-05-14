@@ -1,5 +1,4 @@
 import { Box, Divider } from "@mui/material";
-import { FooterComponent, HeaderComponent } from "../../components";
 
 import NamBanner from "../../assets/image/Nam_cate_desktop-210425.webp";
 import BlockProduct from "../../components/layouts/Block-product";
@@ -13,7 +12,6 @@ const MenProducts = () => {
         overflowX: "hidden",
       }}
     >
-      <HeaderComponent />
       <Box
         component={"img"}
         src={NamBanner}
@@ -23,7 +21,6 @@ const MenProducts = () => {
       />
       <BlockProduct title="Áo Polo" banner={AoPolo} isRow />
       <Divider flexItem />
-      <FooterComponent />
     </Box>
   );
 };

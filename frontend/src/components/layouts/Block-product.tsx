@@ -204,6 +204,8 @@ const Products = [
   },
 ];
 
+const Buttons = [<IconLeft />, <IconRight />];
+
 const BlockProduct: React.FC<BlockProductProps> = ({
   title,
   banner,
@@ -211,7 +213,7 @@ const BlockProduct: React.FC<BlockProductProps> = ({
 }) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const itemWidth = 412; // width của mỗi item, bạn có thể điều chỉnh
+  const itemWidth = 412; // width của mỗi item
 
   const handleScroll = (newIndex: number) => {
     const total = Products.length;
@@ -353,40 +355,32 @@ const BlockProduct: React.FC<BlockProductProps> = ({
               display: "flex",
               justifyContent: "space-between",
               position: "absolute",
-              zIndex: 100,
+              zIndex: 50,
             }}
           >
             {/*các nút điều hướng bên trái và bên phải */}
-            <IconButton
-              sx={{
-                backgroundColor: "rgba(255, 255, 255, 0.3)",
-                color: "black",
-                borderRadius: "100%",
-                width: 56,
-                height: 56,
-                "&:hover": {
-                  backgroundColor: "rgba(255, 255, 255, 1)",
-                },
-              }}
-              onClick={() => handleScroll(currentIndex - 1)}
-            >
-              <IconLeft />
-            </IconButton>
-            <IconButton
-              sx={{
-                backgroundColor: "rgba(255, 255, 255, 0.3)",
-                color: "black",
-                borderRadius: "100%",
-                width: 56,
-                height: 56,
-                "&:hover": {
-                  backgroundColor: "rgba(255, 255, 255, 1)",
-                },
-              }}
-              onClick={() => handleScroll(currentIndex + 1)}
-            >
-              <IconRight />
-            </IconButton>
+            {Buttons.map((button, index) => (
+              <IconButton
+                key={index}
+                sx={{
+                  backgroundColor: "rgba(255, 255, 255, 0.3)",
+                  color: "black",
+                  borderRadius: "100%",
+                  width: 56,
+                  height: 56,
+                  "&:hover": {
+                    backgroundColor: "rgba(255, 255, 255, 1)",
+                  },
+                }}
+                onClick={
+                  index == 0
+                    ? () => handleScroll(currentIndex - 1)
+                    : () => handleScroll(currentIndex + 1)
+                }
+              >
+                {button}
+              </IconButton>
+            ))}
           </Box>
         </Box>
       )}

@@ -54,7 +54,7 @@ const VoucherItem: React.FC<voucherProps> = ({
               m: "0px 0px 4px",
             }}
           >
-            {name}
+            Voucher {name}K
           </Typography>
           <Typography
             sx={{
@@ -144,13 +144,25 @@ const VoucherItem: React.FC<voucherProps> = ({
           >
             <Typography
               sx={{
+                display: "flex",
+                alignItems: "center",
                 textTransform: "uppercase",
                 fontWeight: 700,
                 fontSize: "16px",
                 mt: "24px",
+                gap: 1,
               }}
             >
-              {name}
+              Voucher {name}.000{" "}
+              <Typography
+                sx={{
+                  fontWeight: 700,
+                  fontSize: "16px",
+                  textTransform: "none",
+                }}
+              >
+                đ
+              </Typography>
             </Typography>
             <Box
               component={"img"}
@@ -177,7 +189,7 @@ const VoucherItem: React.FC<voucherProps> = ({
                 mb: "18px",
               }}
             >
-              Giam50 <RxCopy />
+              Giam {name} <RxCopy />
             </Typography>
           </Stack>
           <Box>

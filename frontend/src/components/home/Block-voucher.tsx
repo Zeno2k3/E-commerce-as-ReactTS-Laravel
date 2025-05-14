@@ -4,13 +4,13 @@ import magiamgias from "../../assets/image/magiamgia.png";
 
 const ListVouchers = [
   {
-    name: "Voucher 50k",
+    name: "50",
     content: "Giảm 50k cho đơn từ 999k",
     hsd: "2025-05-31",
     qrGiamGia: magiamgias,
   },
   {
-    name: "Voucher 30k",
+    name: "30",
     content: "Giảm 50k cho đơn từ 499k",
     hsd: "2025-05-31",
     qrGiamGia: magiamgias,

@@ -22,14 +22,15 @@ const FooterComponent = () => {
   const Year = new Date().getFullYear();
   return (
     <>
+      <Divider variant="fullWidth" />
       <Box alignItems={"center"} display={"flex"} flexDirection={"column"}>
         <Grid2
           container
           sx={{
             display: "flex",
             gap: 16,
-            paddingInline: 16,
-            margin: 5,
+            p: "0px 7.3%",
+            margin: 3,
             width: "100%",
           }}
         >
@@ -82,7 +83,7 @@ const FooterComponent = () => {
           <Stack
             sx={{
               flex: 1,
-              gap: 2.5,
+              gap: 1,
             }}
           >
             <Typography
@@ -103,7 +104,7 @@ const FooterComponent = () => {
           <Stack
             sx={{
               flex: 1,
-              gap: 2.5,
+              gap: 1,
             }}
           >
             <Typography
@@ -133,7 +134,7 @@ const FooterComponent = () => {
             }}
           >
             <TextComponet text={"Tải ứng dụng"} style="title" />
-            <TextComponet text={"Phương thức thanh toán"} style='title' />
+            <TextComponet text={"Phương thức thanh toán"} style="title" />
           </Stack>
         </Grid2>
         <Divider sx={{ width: "88%" }} />

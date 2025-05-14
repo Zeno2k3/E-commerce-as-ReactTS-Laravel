@@ -32,14 +32,17 @@ const Pages = [
   {
     name: "Cửu Hàng",
     image: iconCuaHang,
+    url: "store",
   },
   {
     name: "Tài Khoản",
     image: iconTaiKhoan,
+    url: "my-account",
   },
   {
     name: "Giỏ Hàng",
     image: iconGioHang,
+    url: "",
   },
 ];
 
@@ -312,34 +315,46 @@ const HeaderComponent2 = () => {
                 sx={{ pl: "12px", color: "#000" }}
               />
             </Box>
-            {Pages.map((page, index) => (
-              <Stack
-                key={index}
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  cursor: "pointer",
-                }}
-              >
-                <Box
-                  component={"img"}
-                  src={page.image}
+            {Pages.map((page, index) => {
+              const content = (
+                <Stack
                   sx={{
-                    width: "24px",
-                    mt: "6px",
-                  }}
-                />
-                <Typography
-                  sx={{
-                    fontWeight: 500,
-                    fontSize: "13px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    cursor: "pointer",
                   }}
                 >
-                  {page.name}
-                </Typography>
-              </Stack>
-            ))}
+                  <Box
+                    component={"img"}
+                    src={page.image}
+                    sx={{
+                      width: "24px",
+                      mt: "6px",
+                    }}
+                  />
+                  <Typography
+                    sx={{
+                      fontWeight: 500,
+                      fontSize: "13px",
+                    }}
+                  >
+                    {page.name}
+                  </Typography>
+                </Stack>
+              );
+              return page.url ? (
+                <Link
+                  to={`/${page.url}`}
+                  key={index}
+                  style={{ textDecoration: "none" }}
+                >
+                  {content}
+                </Link>
+              ) : (
+                <Box key={index}>{content}</Box>
+              );
+            })}
           </Box>
         </Box>
         <Divider variant={"fullWidth"} />

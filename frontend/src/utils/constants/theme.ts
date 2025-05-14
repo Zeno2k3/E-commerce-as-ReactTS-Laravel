@@ -3,13 +3,13 @@ import { createTheme } from "@mui/material";
 const theme = createTheme({
     palette: {
         primary: {
-            main: "#333F48"
+            main: "#333f48"
         },
         secondary: {
             main: "#da291c"
         },
         text: {
-            secondary: "#333F48"
+            secondary: "#333f48"
         }
     },
     typography: {
