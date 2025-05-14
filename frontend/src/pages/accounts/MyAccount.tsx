@@ -83,7 +83,6 @@ const MyAccount = () => {
         sx={{
           width: "100%",
           display: "flex",
-          justifyContent: "space-between",
         }}
       >
         <Stack
@@ -91,6 +90,7 @@ const MyAccount = () => {
           sx={{
             borderRadius: "8px",
             mt: "20px",
+            mr: "30px",
             p: "23px 20px 16px",
             backgroundColor: "#ffffff",
             display: "flex",
