@@ -32,7 +32,7 @@ const Menus = [
   {
     url: "address",
     icon: address,
-    name: "Địa chỉ",
+    name: "Sổ địa chỉ",
   },
   {
     url: "favorite",

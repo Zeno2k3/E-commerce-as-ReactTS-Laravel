@@ -1,7 +1,11 @@
-import React from "react";
+import Background from "../../components/my-account/layout/Backgroud";
 
 const MembershipCard = () => {
-  return <div>MembershipCard</div>;
+  return (
+    <Background title="Sổ địa chỉ">
+      <></>
+    </Background>
+  );
 };
 
 export default MembershipCard;

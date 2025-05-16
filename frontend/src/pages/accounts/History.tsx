@@ -1,9 +1,11 @@
-import React from 'react'
+import Background from "../../components/my-account/layout/Backgroud";
 
 const History = () => {
   return (
-    <div>History</div>
-  )
-}
+    <Background title="Sổ địa chỉ">
+      <></>
+    </Background>
+  );
+};
 
-export default History
+export default History;

@@ -4,14 +4,14 @@ import {
   FormControlLabel,
   Radio,
   RadioGroup,
-  Stack,
   TextField,
   Typography,
 } from "@mui/material";
 
 import checkIcon from "../../assets/svg/icon-radiobuton.svg";
 import icon from "../../assets/svg/icon-radiobutton.svg";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import Background from "../../components/my-account/layout/Backgroud";
 
 const dataRadios = [
   {
@@ -33,6 +33,19 @@ const Account = () => {
   const [email, setEmail] = useState("");
   const [isChanged, setIsChanged] = useState(false);
 
+  const Date = "2003-10-1";
+  const Phone = "098765431";
+
+  const labels = useMemo(
+    () => [
+      { label: "Họ tên", value: uerName },
+      { label: "Số điện thoại", value: Phone },
+      { label: "Email", value: email },
+      { label: "Sinh nhật", value: Date },
+    ],
+    [email, uerName]
+  );
+
   useEffect(() => {
     const userNameDefault =
       labels.find((label) => label.value === "uerName")?.value || "";
@@ -44,37 +57,9 @@ const Account = () => {
     } else {
       setIsChanged(false);
     }
-  }, [uerName, email]);
-
-  const Date = "2003-10-1";
-  const Phone = "098765431";
-  const labels = [
-    { label: "Họ tên", value: uerName },
-    { label: "Số điện thoại", value: Phone },
-    { label: "Email", value: email },
-    { label: "Sinh nhật", value: Date },
-  ];
-
+  }, [labels, uerName, email]);
   return (
-    <Stack
-      sx={{
-        backgroundColor: "#fff",
-        p: "24px 20px",
-        mt: "20px",
-        borderRadius: "8px",
-        width: "70%",
-        boxShadow: "#74869b14 0px 2px 4px 0px",
-      }}
-    >
-      <Typography
-        sx={{
-          fontSize: "20px",
-          fontWeight: 700,
-          mb: "24px",
-        }}
-      >
-        Thông tin tài khoản
-      </Typography>
+    <Background title="Thông tin tài khoản">
       <Typography
         sx={{
           fontWeight: 600,
@@ -163,7 +148,7 @@ const Account = () => {
           borderRadius: "2px",
           borderStyle: "solid",
           borderWidth: "1px",
-          borderColor: "#CBD5E1",
+          borderColor: isChanged == true ? "none" : "#CBD5E1",
           boxShadow: "none",
           ":hover": {
             boxShadow: "none",
@@ -175,7 +160,7 @@ const Account = () => {
       >
         Lưu thay đổi
       </Button>
-    </Stack>
+    </Background>
   );
 };
 

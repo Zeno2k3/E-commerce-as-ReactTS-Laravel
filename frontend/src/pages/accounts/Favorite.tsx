@@ -1,9 +1,11 @@
-import React from 'react'
+import Background from "../../components/my-account/layout/Backgroud";
 
 const Favorite = () => {
   return (
-    <div>Favorite</div>
-  )
-}
+    <Background title="Sổ địa chỉ">
+      <></>
+    </Background>
+  );
+};
 
-export default Favorite
+export default Favorite;

@@ -1,9 +1,11 @@
-import React from 'react'
+import Background from "../../components/my-account/layout/Backgroud";
 
 const Oder = () => {
   return (
-    <div>Oder</div>
-  )
-}
+    <Background title="Sổ địa chỉ">
+      <></>
+    </Background>
+  );
+};
 
-export default Oder
+export default Oder;

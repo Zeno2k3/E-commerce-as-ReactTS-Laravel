@@ -323,6 +323,7 @@ const HeaderComponent2 = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     cursor: "pointer",
+                    mr: "19px",
                   }}
                 >
                   <Box
