@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import VoucherItem from "../ui/Voucher-item";
+import VoucherItem from "../layouts/Voucher-item";
 import magiamgias from "../../assets/image/magiamgia.png";
 
 const ListVouchers = [

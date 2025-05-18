@@ -1,5 +1,5 @@
 import { Box, Dialog, Typography } from "@mui/material";
-import Background from "../../components/my-account/layout/Backgroud";
+import Background from "../../components/layouts/Background";
 import { useState } from "react";
 import DialogItemAddress from "../../components/my-account/layout/DialogItemAddress";
 
@@ -77,7 +77,11 @@ const Address = () => {
             },
           }}
         >
-          <DialogItemAddress title="Chỉnh sửa địa chỉ" setOpen={setOpen} setUser={setUser}/>
+          <DialogItemAddress
+            title="Chỉnh sửa địa chỉ"
+            setOpen={setOpen}
+            setUser={setUser}
+          />
         </Dialog>
         <Typography
           sx={{

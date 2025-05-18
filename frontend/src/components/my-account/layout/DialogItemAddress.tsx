@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import InputComponent from "../ui/InputComponent";
-import MenuDrops from "../ui/MenuDrops";
+import MenuDrops from "./MenuDrops";
 import { useState } from "react";
 import theme from "../../../utils/constants/theme";
 import ButtonAccount from "../ui/ButtonAccount";

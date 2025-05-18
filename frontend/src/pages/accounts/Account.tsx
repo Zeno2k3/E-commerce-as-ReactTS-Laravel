@@ -11,7 +11,7 @@ import {
 import checkIcon from "../../assets/svg/icon-radiobuton.svg";
 import icon from "../../assets/svg/icon-radiobutton.svg";
 import { useEffect, useMemo, useState } from "react";
-import Background from "../../components/my-account/layout/Backgroud";
+import Background from "../../components/layouts/Background";
 
 const dataRadios = [
   {

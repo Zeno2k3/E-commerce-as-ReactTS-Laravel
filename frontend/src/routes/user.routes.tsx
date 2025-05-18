@@ -8,6 +8,7 @@ import MembershipCard from "../pages/accounts/MembershipCard";
 import MyAccount from "../pages/accounts/MyAccount";
 import Oder from "../pages/accounts/Oder";
 import PromoCode from "../pages/accounts/PromoCode";
+import ProductDetails from "../pages/ProductDetails";
 import AccessoriesProducts from "../pages/products/AccessoriesProducts";
 import BoyProducts from "../pages/products/BoyProducts";
 import GirlProducts from "../pages/products/GirlProducts";
@@ -25,7 +26,7 @@ const user = [
       { path: "girl", element: <GirlProducts /> },
       { path: "boy", element: <BoyProducts /> },
       { path: "accessories", element: <AccessoriesProducts /> },
-
+      { path: "product/:slg-:ProductID", element: <ProductDetails /> },
       {
         path: "/my-account",
         element: <MyAccount />,

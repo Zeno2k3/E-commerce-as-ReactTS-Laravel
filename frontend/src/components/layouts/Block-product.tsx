@@ -1,6 +1,6 @@
 import { Box, Button, IconButton, Typography } from "@mui/material";
 
-import ProductItem from "../../components/ui/Product-item";
+import ProductItem from "./Product-item";
 
 import sab405 from "../../assets/imgae-color/sa405.webp";
 import sb128 from "../../assets/imgae-color/sb128.webp";
@@ -63,7 +63,7 @@ const Products = [
   {
     id: 3,
     masp: "3OT25S001-SA407",
-    name: "Áo khoác da bò",
+    name: "Áo khoác da thú",
     price: "299.000 đ",
     priceSale: "311.000 đ",
     percent: "14%",
@@ -87,7 +87,7 @@ const Products = [
   {
     id: 3,
     masp: "3OT25S001-SA407",
-    name: "Áo khoác da bò",
+    name: "Áo khoác da chim",
     price: "299.000 đ",
     priceSale: "311.000 đ",
     percent: "14%",
@@ -111,7 +111,7 @@ const Products = [
   {
     id: 4,
     masp: "3OT25S001-SA407",
-    name: "Áo khoác da bò",
+    name: "Áo khoác da trâu",
     price: "299.000 đ",
     priceSale: "311.000 đ",
     percent: "14%",
@@ -136,7 +136,7 @@ const Products = [
   {
     id: 5,
     masp: "3OT25S001-SA407",
-    name: "Áo khoác da bò",
+    name: "Áo khoác da người",
     price: "299.000 đ",
     priceSale: "311.000 đ",
     percent: "14%",
@@ -158,7 +158,7 @@ const Products = [
   {
     id: 6,
     masp: "3OT25S001-SA407",
-    name: "Áo khoác da bò",
+    name: "Áo khoác da chó",
     price: "299.000 đ",
     priceSale: "311.000 đ",
     percent: "14%",
@@ -247,7 +247,7 @@ const BlockProduct: React.FC<BlockProductProps> = ({
       {isRow == false ? (
         <>
           <Box
-            className={"row"}
+            className={"column"}
             sx={{
               width: "100%",
               display: "flex",
@@ -266,7 +266,7 @@ const BlockProduct: React.FC<BlockProductProps> = ({
               }}
             />
             <Box
-              className={"product-block-row-item"}
+              className={"product-block-column-item"}
               sx={{
                 display: "flex",
                 flexDirection: "row",
@@ -306,10 +306,7 @@ const BlockProduct: React.FC<BlockProductProps> = ({
           </Button>
         </>
       ) : (
-        <Box
-          className={"column"}
-          sx={{ width: "100%", display: "flex", gap: 3 }}
-        >
+        <Box className={"row"} sx={{ width: "100%", display: "flex", gap: 3 }}>
           <Box
             component={"img"}
             src={banner}

@@ -9,7 +9,6 @@ const DataCollections = [
   {
     image: Nu,
   },
-
   {
     image: Nam,
   },
@@ -43,7 +42,7 @@ const BlockCollection = () => {
       <Box
         sx={{
           display: "flex",
-          gap: 4,
+          gap: 4.1,
         }}
       >
         {DataCollections.map((collection) => (

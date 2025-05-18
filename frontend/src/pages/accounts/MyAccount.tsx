@@ -1,5 +1,5 @@
 import { alpha, Box, LinearProgress, Stack, Typography } from "@mui/material";
-import RouterLink from "../../components/ui/RouterLink";
+import RouterLink from "../../components/layouts/RouterLink";
 import { Link, Outlet } from "react-router-dom";
 
 import profile from "../../assets/svg/profile.svg";

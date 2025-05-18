@@ -1,4 +1,4 @@
-import MenuContent from "../ui/MenuContent";
+import MenuContent from "./MenuContent";
 
 import {
   nam1Menulist,

@@ -1,4 +1,4 @@
-import Background from "../../components/my-account/layout/Backgroud";
+import Background from "../../components/layouts/Background";
 
 const Favorite = () => {
   return (
