@@ -4,15 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProductSize extends Model
+class ProductColor extends Model
 {
-    public $table = 'product_size';
-    public $timestamps = false; // không sử dụng timestamp
-    
+    public $table = 'product_color';
     protected $primaryKey = 'id';
+
     protected $fillable = [
-        'size',
+        'color',
     ];
+
+    public function product_image()
+    {
+        return $this->hasMany(ProductImage::class);
+    }
 
     public function product_color_size()
     {

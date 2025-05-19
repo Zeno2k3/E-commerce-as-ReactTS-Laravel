@@ -88,10 +88,7 @@ npm run dev
 ```
 ├── frontend/                # Frontend - React + TypeScript
 │   ├── public/
-│   ├── src/
-│   │   ├── assets/        # Static assets
-│   │   │   ├── image/     # Images
-│   │   │   ├── imgae-color/ # Color variants
+│   │   ├── image/     # Images
 │   │   │   └── index.ts
 │   │   ├── components/    # Shared components
 │   │   │   ├── layouts/   # Layout components
@@ -124,23 +121,29 @@ npm run dev
 
 ## 🤝 Đóng góp
 
-Mọi đóng góp đều được chào đón. Để đóng góp:
+Mọi đóng góp nhằm cải thiện dự án đều được chào đón. Vui lòng tuân theo quy trình sau:
 
-1. 🍴 Fork dự án
-2. 🌿 Tạo branch mới (`git checkout -b feature/AmazingFeature`)
-3. 💾 Commit thay đổi (`git commit -m 'Add some AmazingFeature'`)
-4. 📤 Push to branch (`git push origin feature/AmazingFeature`)
-5. 🔄 Mở Pull Request
+1.  🍴 Fork dự án.
+2.  🌿 Tạo một branch mới cho tính năng hoặc sửa lỗi của bạn (`git checkout -b feature/ten-tinh-nang`).
+3.  💾 Commit các thay đổi của bạn (`git commit -m 'Mô tả ngắn gọn thay đổi'`).
+4.  📤 Push branch của bạn lên repository đã fork (`git push origin feature/ten-tinh-nang`).
+5.  🔄 Mở một Pull Request (PR) tới repository gốc.
 
-## 📄 License
+Vui lòng đảm bảo code của bạn tuân thủ các nguyên tắc linting và format của dự án.
 
-Distributed under the MIT License. See `LICENSE` for more information.
+## 📄 Giấy phép
+
+Dự án này được phân phối dưới Giấy phép MIT. Xem file `LICENSE` để biết thêm chi tiết.
 
 ## 📫 Liên hệ
 
-Your Name - email@example.com
+Nếu có bất kỳ câu hỏi hoặc góp ý nào, vui lòng liên hệ:
 
-🌐 Project Link: [https://github.com/Zeno2k3/ecommerce-clone](https://github.com/Zeno2k3/ecommerce-clone)
+Tên của bạn - [email@example.com](mailto:email@example.com)
+
+🌐 Liên kết dự án: [https://github.com/Zeno2k3/ecommerce-clone](https://github.com/Zeno2k3/ecommerce-clone)
+
+---
 
 ## 🔧 Tech Stack Badges
 
@@ -150,5 +153,7 @@ Your Name - email@example.com
 ![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
