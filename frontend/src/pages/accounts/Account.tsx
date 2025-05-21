@@ -149,6 +149,7 @@ const Account = () => {
           borderStyle: "solid",
           borderWidth: "1px",
           borderColor: isChanged == true ? "none" : "#CBD5E1",
+          cursor: isChanged == true ? "pointer" : "default",
           boxShadow: "none",
           ":hover": {
             boxShadow: "none",

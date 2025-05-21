@@ -1,15 +1,3 @@
-import MenuContent from "./MenuContent";
-
-import {
-  nam1Menulist,
-  nam2Menulist,
-  nu1Menulist,
-  nu2Menulist,
-  benam1Menulist,
-  benam2Menulist,
-  benu1Menulist,
-  benu2Menulist,
-} from "../../assets";
 import {
   Box,
   Button,
@@ -27,6 +15,9 @@ import iconGioHang from "../../assets/svg/icon-giohang.svg";
 import iconSearch from "../../assets/svg/icon-search.svg";
 import { Link } from "react-router-dom";
 import theme from "../../utils/constants/theme";
+import MenuContent from "./MenuContent";
+
+import { initialListMenu } from "../../utils/constants/ListMenu";
 
 const Pages = [
   {
@@ -43,113 +34,6 @@ const Pages = [
     name: "Giỏ Hàng",
     image: iconGioHang,
     url: "",
-  },
-];
-
-const ListMenu = [
-  {
-    name: "Nữ",
-    url: "/women",
-    hangmoi: ["Hàng mới về", "Áo phong cách", "disney"],
-    noibat: ["Giá tốt"],
-    dmsp: [
-      "Áo phông/ Áo thun",
-      "Áo polo ",
-      "Áo sơ mi & Áo kiểu ",
-      "Áo chống nắng",
-      "Canifa Active/ Quần áo thể thao",
-      "Quần soóc/ Quần short",
-      "Quần dài & Quần Jean",
-      "Quần áo nỉ",
-      "Quần áo nỉ",
-      "Quần áo mặc nhà/ Đồ ngủ",
-      "Áo khoác & Giữ nhiệt",
-      "Áo len",
-      "Bộ quần áo",
-      "Đồ lót",
-      "Tất/Vớ",
-    ],
-    phukien: ["Hàng mới về", "Áo phong cách", "disney"],
-    image1: nu1Menulist,
-    image2: nu2Menulist,
-  },
-  {
-    name: "Nam",
-    url: "/men",
-    hangmoi: ["Hàng mới về", "Áo phong cách", "disney"],
-    noibat: ["Giá tốt"],
-    dmsp: [
-      "Áo phông/ Áo thun",
-      "Áo polo ",
-      "Áo sơ mi & Áo kiểu ",
-      "Áo chống nắng",
-      "Canifa Active/ Quần áo thể thao",
-      "Quần soóc/ Quần short",
-      "Quần dài & Quần Jean",
-      "Quần áo nỉ",
-      "Quần áo nỉ",
-      "Quần áo mặc nhà/ Đồ ngủ",
-      "Áo khoác & Giữ nhiệt",
-      "Áo len",
-      "Bộ quần áo",
-      "Đồ lót",
-      "Tất/Vớ",
-    ],
-    phukien: ["Hàng mới về", "Áo phong cách", "disney"],
-    image1: nam1Menulist,
-    image2: nam2Menulist,
-  },
-  {
-    name: "Bé Gái",
-    url: "/girl",
-    hangmoi: ["Hàng mới về", "Áo phong cách", "disney"],
-    noibat: ["Giá tốt"],
-    dmsp: [
-      "Áo phông/ Áo thun",
-      "Áo polo ",
-      "Áo sơ mi & Áo kiểu ",
-      "Áo chống nắng",
-      "Canifa Active/ Quần áo thể thao",
-      "Quần soóc/ Quần short",
-      "Quần dài & Quần Jean",
-      "Quần áo nỉ",
-      "Quần áo nỉ",
-      "Quần áo mặc nhà/ Đồ ngủ",
-      "Áo khoác & Giữ nhiệt",
-      "Áo len",
-      "Bộ quần áo",
-      "Đồ lót",
-      "Tất/Vớ",
-    ],
-    phukien: ["Hàng mới về", "Áo phong cách", "disney"],
-    image1: benu1Menulist,
-    image2: benu2Menulist,
-  },
-  {
-    name: "Bé Trai",
-    url: "/boy",
-    hangmoi: ["Hàng mới về", "Áo phong cách", "disney"],
-    noibat: ["Giá tốt"],
-    dmsp: [
-      "Áo phông/ Áo thun",
-      "Áo polo ",
-      "Áo sơ mi & Áo kiểu ",
-      "Áo chống nắng",
-      "Canifa Active/ Quần áo thể thao",
-      "Quần soóc/ Quần short",
-      "Quần dài & Quần Jean",
-      "Quần áo nỉ",
-      "Quần áo nỉ",
-      "Quần áo mặc nhà/ Đồ ngủ",
-      "Áo khoác & Giữ nhiệt",
-      "Áo len",
-      "Bộ quần áo",
-      "Đồ lót",
-      "Tất/Vớ",
-    ],
-    phukien: ["Hàng mới về", "Áo phong cách", "disney"],
-    image1: benam1Menulist,
-    image2: benam2Menulist,
   },
 ];
 
@@ -206,7 +90,6 @@ const HeaderComponent2 = () => {
             alignItems: "center",
             justifyContent: "space-between",
             p: "16px 7.3%",
-            flexDirection: "row",
           }}
         >
           <Box
@@ -225,7 +108,7 @@ const HeaderComponent2 = () => {
                 title="HomePage"
               />
             </Link>
-            {ListMenu.map((menu, index) => (
+            {initialListMenu.map((menu, index) => (
               <Box key={index}>
                 <Button
                   className="menu-link"

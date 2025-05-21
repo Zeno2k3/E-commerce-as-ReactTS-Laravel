@@ -6,7 +6,10 @@ const ProductDetails = () => {
       sx={{
         backgroundColor: alpha("#d9d9d9", 0.1),
       }}
-    ></Box>
+    >
+      
+
+    </Box>
   );
 };
 

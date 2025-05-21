@@ -218,7 +218,7 @@ const VoucherItem: React.FC<voucherProps> = ({
               width: "100%",
               height: "46px",
               borderRadius: "1px",
-              mt: "12px",
+              my: "12px",
               fontWeight: 700,
             }}
             onClick={() => setOpen(false)}

@@ -1,7 +1,16 @@
-import { Stack, SxProps, TextField, Theme, Typography } from "@mui/material";
+import {
+  IconButton,
+  Stack,
+  SxProps,
+  TextField,
+  Theme,
+  Typography,
+} from "@mui/material";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 interface InputProps {
   title?: string;
+  isLabel?: boolean;
   value?: string;
   onChange?:
     | React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
@@ -9,19 +18,26 @@ interface InputProps {
   placeholder?: string;
   sx?: SxProps<Theme>;
   width?: string;
+  isIcon?: boolean;
+  onClear?: () => void;
 }
 
 const InputComponent: React.FC<InputProps> = ({
   value,
+  isLabel = true,
   onChange,
+  onClear,
   placeholder,
   title,
   sx,
   width,
+  isIcon = false,
 }) => {
   return (
     <Stack sx={{ ...sx, display: "flex", width: width }}>
-      <Typography sx={{ fontWeight: 600, mb: "10px" }}>{title}</Typography>
+      {isLabel && (
+        <Typography sx={{ fontWeight: 600, mb: "10px" }}>{title}</Typography>
+      )}
       <TextField
         placeholder={placeholder}
         value={value}
@@ -31,6 +47,7 @@ const InputComponent: React.FC<InputProps> = ({
           backgroundColor: "#fff",
           "& .MuiInputBase-input": {
             fontWeight: 500,
+            color: "#000",
           },
           "& .MuiOutlinedInput-notchedOutline": {
             borderRadius: "2px",
@@ -43,6 +60,13 @@ const InputComponent: React.FC<InputProps> = ({
             "&.Mui-focused fieldset": {
               borderWidth: "1px",
             },
+          },
+        }}
+        slotProps={{
+          input: {
+            endAdornment: isIcon && (
+              <IconButton onClick={onClear} children={<CancelIcon />} />
+            ),
           },
         }}
       />

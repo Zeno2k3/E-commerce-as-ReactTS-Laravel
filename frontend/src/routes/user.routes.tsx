@@ -9,11 +9,12 @@ import MyAccount from "../pages/accounts/MyAccount";
 import Oder from "../pages/accounts/Oder";
 import PromoCode from "../pages/accounts/PromoCode";
 import ProductDetails from "../pages/ProductDetails";
-import AccessoriesProducts from "../pages/products/AccessoriesProducts";
-import BoyProducts from "../pages/products/BoyProducts";
-import GirlProducts from "../pages/products/GirlProducts";
-import MenProducts from "../pages/products/MenProducts";
-import WomenProducts from "../pages/products/WomenProducts";
+import AccessoriesProducts from "../pages/category/AccessoriesProducts";
+import BoyProducts from "../pages/category/BoyProducts";
+import GirlProducts from "../pages/category/GirlProducts";
+import MenProducts from "../pages/category/MenProducts";
+import WomenProducts from "../pages/category/WomenProducts";
+import CheckOut from "../pages/CheckOut";
 
 const user = [
   {
@@ -44,6 +45,10 @@ const user = [
         ],
       },
     ],
+  },
+  {
+    path: "/checkout",
+    element: <CheckOut />,
   },
 ];
 
