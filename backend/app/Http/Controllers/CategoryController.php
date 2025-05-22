@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
-use App\Models\Customer;
+use App\Models\Category;
 
-class CustomerController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $customers = Customer::latest()->get();
+        $category = Category::all();
         return response()->json([
             "success" => true,
-            'message' => 'Lấy danh sách khách hàng thành công',
-            'data' => $customers,
+            'data' => $category,
+            'message' => 'Lấy danh sách danh mục thành công',
         ]);
     }
 
@@ -31,8 +32,17 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {
-        
+    public function store(CategoryRequest $request)
+    {
+        $category = new Category;
+        $category->fill($request->all());
+        $category->save();
+
+        return response()->json([
+            "success" => true,
+            'data' => $category,
+            'message' => 'Thêm danh mục thành công',
+        ], 201);
     }
 
     /**
@@ -40,7 +50,7 @@ class CustomerController extends Controller
      */
     public function show(string $id)
     {
-        
+        //
     }
 
     /**

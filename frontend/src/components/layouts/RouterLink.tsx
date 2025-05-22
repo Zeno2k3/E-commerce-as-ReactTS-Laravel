@@ -11,14 +11,14 @@ interface PropsRouter {
   sx?: SxProps<Theme>;
 }
 
-const RouterLink: React.FC<PropsRouter> = ({ ListLink, currentLink, sx}) => {
+const RouterLink: React.FC<PropsRouter> = ({ ListLink, currentLink, sx }) => {
   return (
     <Box
       sx={{
         width: "100%",
         display: "flex",
         gap: 2,
-        ...sx
+        ...sx,
       }}
     >
       {ListLink.map((router, index) => (
@@ -64,7 +64,7 @@ const RouterLink: React.FC<PropsRouter> = ({ ListLink, currentLink, sx}) => {
         sx={{
           fontWeight: 500,
           fontSize: "13px",
-          color: "#74869b",
+          color: "#000",
           p: "5px 0px",
         }}
       >

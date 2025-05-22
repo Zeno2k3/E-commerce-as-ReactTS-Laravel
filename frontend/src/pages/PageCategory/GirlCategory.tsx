@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 
 import GirlBanner from "../../assets/image/girl_cate_desktop-030425a.webp";
 
-const GirlProducts = () => {
+const GirlCategory = () => {
   return (
     <div>
       <Box
@@ -16,4 +16,4 @@ const GirlProducts = () => {
   );
 };
 
-export default GirlProducts;
+export default GirlCategory;

@@ -2,37 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Customer;
+use App\Http\Requests\ProductRequest;
+use App\Models\Product;
+use Request;
 
-class CustomerController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $customers = Customer::latest()->get();
+        $products = Product::all();
         return response()->json([
             "success" => true,
-            'message' => 'Lấy danh sách khách hàng thành công',
-            'data' => $customers,
+            'data' => $products,
+            'message' => 'Lấy danh sách sản phẩm thành công',
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {
-        
+    public function store(ProductRequest $request)
+    {
+        $product = new Product;
+        $product->fill($request->all());
+        $product->save();
+
+        return response()->json([
+            'validated' => $request->validated()
+        ]);
+
+        return response()->json([
+            "success" => true,
+            'data' => $product,
+            'message' => 'Thêm sản phẩm thành công',
+        ], 201);
     }
 
     /**
@@ -40,7 +51,7 @@ class CustomerController extends Controller
      */
     public function show(string $id)
     {
-        
+        //
     }
 
     /**
@@ -54,7 +65,7 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProductRequest $request, string $id)
     {
         //
     }

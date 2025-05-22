@@ -28,6 +28,8 @@ const Homepage = () => {
       >
         <FromLogin />
         <Link to="/checkout">Thanh Toán</Link>
+
+        <Link to="/men/gia-moi">Men</Link>
       </Box>
     </>
   );

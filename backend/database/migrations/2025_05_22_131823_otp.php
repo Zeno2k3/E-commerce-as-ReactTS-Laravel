@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('target_audiences', function (Blueprint $table) {
-            $table->id();
-            $table->enum('type', ['Nam', 'Nữ', 'Bé trai', 'Bé gái']);
-            $table->timestamps();
+        Schema::table('customers', function (Blueprint $table) {
+            $table->string('otp_code', 6)->nullable();
+            $table->timestamp('otp_expires_at')->nullable();
         });
     }
 
@@ -23,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('target_audiences');
+        Schema::table('customers', function (Blueprint $table) {
+            $table->dropColumn(['otp_code', 'otp_expires_at']);
+        });
     }
 };

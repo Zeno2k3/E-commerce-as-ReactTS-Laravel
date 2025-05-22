@@ -5,7 +5,7 @@ import BlockProduct from "../../components/layouts/Block-product";
 
 import AoPolo from "../../assets/image/1.AoPolo_slide_desktop-min-170325.webp";
 
-const MenProducts = () => {
+const MenCategory = () => {
   return (
     <Box
       sx={{
@@ -24,4 +24,4 @@ const MenProducts = () => {
   );
 };
 
-export default MenProducts;
+export default MenCategory;

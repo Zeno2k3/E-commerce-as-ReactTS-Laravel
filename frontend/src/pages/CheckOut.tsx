@@ -28,7 +28,7 @@ import Shopeepay from "../assets/svg/shopeepay.svg";
 
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import { useEffect, useRef, useState } from "react";
-import OderItem from "../components/thanhtoan/oderItem";
+import OderItem from "../components/thanhtoan/OderItem";
 
 import oderitemimage from "../assets/image/8ts24s009-se068-thumb.webp";
 import oderitemcolor from "../assets/image/se068.png";
@@ -542,7 +542,19 @@ const CheckOut = () => {
               {" "}
               (Đã bao gồm thuế VAT)
             </Typography>
-            <ButtonAccount text={"Thanh Toán"} />
+            <ButtonAccount
+              text={"Thanh Toán"}
+              sx={{
+                borderColor: isOnClick > -1 ? "none" : "#CBD5E1",
+                cursor: isOnClick > -1 ? "pointer" : "default",
+                boxShadow: "none",
+                ":hover": {
+                  boxShadow: "none",
+                },
+                color: isOnClick > -1 ? "#fff" : "#a6b3c2",
+                backgroundColor: isOnClick > -1 ? "#da291c" : "#edf1f5",
+              }}
+            />
           </CheckOutBox>
         </Stack>
       </Box>

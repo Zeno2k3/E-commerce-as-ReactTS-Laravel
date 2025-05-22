@@ -7,4 +7,9 @@ export interface ListMenuType {
     phukien: Array<string>;
     image1: string;
     image2: string;
-} 
+}
+
+export interface MenuItemType {
+    name: string;
+    url: string;
+}

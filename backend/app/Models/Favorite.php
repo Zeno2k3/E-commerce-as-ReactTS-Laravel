@@ -9,7 +9,6 @@ class Favorite extends Model
     public $table = 'favorites';
     protected $primaryKey = ['customer_id', 'product_id'];
     public $incrementing = false;
-    public $timestamps = false;
 
     protected $fillable = [
         'customer_id',
@@ -18,7 +17,7 @@ class Favorite extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'customer_id');
+        return $this->belongsTo(Customer::class, 'customer_id');
     }
 
     public function product()

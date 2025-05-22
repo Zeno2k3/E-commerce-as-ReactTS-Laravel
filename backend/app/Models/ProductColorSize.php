@@ -33,12 +33,3 @@ class ProductColorSize extends Model
         return $this->belongsTo(Product::class, 'product_id');
     }
 }
-
-
-// Schema::create('product_color_sizes', function (Blueprint $table) {
-//             $table->foreignId('color_id')->references('id')->on('product_color')->onDelete('cascade');
-//             $table->foreignId('size_id')->references('id')->on('product_sizes')->onDelete('cascade');
-//             $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
-//             $table->primary(['color_id', 'size_id', 'product_id'])->unique();
-//             $table->timestamps();
-//         });

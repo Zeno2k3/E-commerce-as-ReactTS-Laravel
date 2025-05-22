@@ -9,9 +9,6 @@ class Product extends Model
 {
     use HasFactory;
     public $table = 'products';
-    public $timestamps = false; // không sử dụng timestamp
-    
-    
     protected $primaryKey = 'id';
     protected $fillable = [
         'product_code',
@@ -23,6 +20,9 @@ class Product extends Model
         'discount_percent',
         'discount_price',
         'category_id',
+        'banner',
+        'created_at',
+        'updated_at',
     ];
 
     public function category()

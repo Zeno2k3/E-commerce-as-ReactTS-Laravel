@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 
 import NuBanner from "../../assets/image/Nu_cate_desktop-210425.webp";
 
-const WomenProducts = () => {
+const WomenCategory = () => {
   return (
     <>
       <Box
@@ -16,4 +16,4 @@ const WomenProducts = () => {
   );
 };
 
-export default WomenProducts;
+export default WomenCategory;

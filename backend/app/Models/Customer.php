@@ -9,17 +9,23 @@ class Customer extends Model
 {
     use HasFactory; // kết nôi database tương ứng
     // Khai báo các trường thuộc tính tương ứng với database.
-    public $timestamps = false; 
     protected $table = 'customers';
     protected $primaryKey = 'id';
-    
+
     // Gán nhiều thuộc tính cùng lúc;
     protected $fillable = [
         'name',
         'email',
         'phone',
-        'gender '
+        'gender ',
+        'otp_code',
+        'otp_expires_at',
     ];
+
+    protected $casts = [
+        'otp_expires_at' => 'datetime',
+    ];
+    
 
     // quan hệ
     public function addresses()

@@ -3,21 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Customer;
 
-class CustomerController extends Controller
+class OtpController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $customers = Customer::latest()->get();
-        return response()->json([
-            "success" => true,
-            'message' => 'Lấy danh sách khách hàng thành công',
-            'data' => $customers,
-        ]);
+        //
     }
 
     /**
@@ -31,8 +25,9 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {
-        
+    public function store(Request $request)
+    {
+        //
     }
 
     /**
@@ -40,7 +35,7 @@ class CustomerController extends Controller
      */
     public function show(string $id)
     {
-        
+        //
     }
 
     /**

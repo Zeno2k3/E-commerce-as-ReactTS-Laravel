@@ -105,23 +105,23 @@ const ProductItem: React.FC<ProductItemProps> = ({
               >
                 {addItem == true
                   ? swatchColor[indexBorder].Sizes?.map((size: string) => (
-                      <Box
-                        className={"block-size"}
-                        sx={{
-                          background: "#fff",
-                          width: "36px",
-                          height: "36px",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          cursor: "pointer",
-                          borderRadius: "2px",
-                          m: "4px",
-                        }}
-                      >
-                        <Typography fontWeight={500}>{size}</Typography>
-                      </Box>
-                    ))
+                    <Box
+                      className={"block-size"}
+                      sx={{
+                        background: "#fff",
+                        width: "36px",
+                        height: "36px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                        borderRadius: "2px",
+                        m: "4px",
+                      }}
+                    >
+                      <Typography fontWeight={500}>{size}</Typography>
+                    </Box>
+                  ))
                   : null}
               </Box>
             )}

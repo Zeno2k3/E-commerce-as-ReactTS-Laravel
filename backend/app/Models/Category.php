@@ -14,13 +14,11 @@ class Category extends Model
     protected $fillable = [
         'name',
         'slug',
-        'target_audiences_id',
+        'type',
+        'parent_id',
+        'created_at',
+        'updated_at',
     ];
-
-    public function targetAudience()
-    {
-        return $this->belongsTo(TargetAudience::class, 'target_audiences_id');
-    }
     public function products()
     {
         return $this->hasMany(Product::class);

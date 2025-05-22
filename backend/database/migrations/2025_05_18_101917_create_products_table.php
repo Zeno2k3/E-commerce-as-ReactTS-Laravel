@@ -22,6 +22,7 @@ return new class extends Migration
             $table->double('original_price');
             $table->double('discount_percent')->default(0);
             $table->double('discount_price')->nullable();
+            $table->string('banner')->nullable();
             $table->timestamps();
         });
     }

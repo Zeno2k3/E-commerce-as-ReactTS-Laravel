@@ -10,7 +10,6 @@ class Voucher extends Model
     use hasFactory;
 
     public $table = 'vouchers';
-    public $timestamps = false; // không sử dụng timestamp
 
     protected $primaryKey = 'id';
     protected $fillable = [
