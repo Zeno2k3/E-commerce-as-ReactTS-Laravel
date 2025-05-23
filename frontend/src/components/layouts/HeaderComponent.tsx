@@ -33,7 +33,7 @@ const Pages = [
   {
     name: "Giỏ Hàng",
     image: iconGioHang,
-    url: "",
+    url: "checkout",
   },
 ];
 

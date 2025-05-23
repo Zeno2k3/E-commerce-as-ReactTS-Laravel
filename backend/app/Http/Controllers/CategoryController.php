@@ -64,19 +64,6 @@ class CategoryController extends Controller
             'message' => 'Lấy danh mục thành công',
         ], 200);
     }
-
-    public function getParentCategories()
-    {
-        $categories = Category::whereNull('parent_id')->select('id', 'name')->get();
-
-        return response()->json([
-            "success" => true,
-            "data" => $categories,
-            "message" => "Lấy danh sách danh mục cha thành công"
-        ], 200);
-    }
-
-
     /**
      * Show the form for editing the specified resource.
      */

@@ -1,7 +1,12 @@
+import Background from "../../components/layouts/Background";
 
 
 const PromoCode = () => {
-  return <div>PromoCode</div>;
+  return (
+    <Background title="Mã ưu đãi">
+
+    </Background>
+  )
 };
 
 export default PromoCode;

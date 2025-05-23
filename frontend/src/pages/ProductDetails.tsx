@@ -7,8 +7,6 @@ const ProductDetails = () => {
         backgroundColor: alpha("#d9d9d9", 0.1),
       }}
     >
-      
-
     </Box>
   );
 };

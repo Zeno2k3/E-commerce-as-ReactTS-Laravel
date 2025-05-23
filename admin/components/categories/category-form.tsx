@@ -17,8 +17,8 @@ import * as z from "zod"
 const formSchema = z.object({
   name: z.string().min(2, { message: "Tên danh mục phải có ít nhất 2 ký tự." }),
   slug: z.string().min(2, { message: "Slug phải có ít nhất 2 ký tự." }),
-  type: z.enum(["Nam", "Nữ", "Bé trai", "Bé gái", 'Other']).optional(),
-  parent_id: z.string().optional(),
+  type: z.enum(["Nam", "Nữ", "Bé trai", "Bé gái"]).optional(),
+  parent_id: z.number().optional(),
 })
 
 type CategoryFormValues = z.infer<typeof formSchema>
@@ -30,6 +30,14 @@ const defaultValues: Partial<CategoryFormValues> = {
   parent_id: undefined,
 }
 
+interface CategoryType {
+  id: number
+  name: string
+  slug: string
+  type: string
+  parent_id: number | null
+}
+
 interface CategoryFormProps {
   categoryId?: number
 }
@@ -38,7 +46,7 @@ export function CategoryForm({ categoryId }: CategoryFormProps) {
   const { toast } = useToast()
   const router = useRouter()
   const [loading, setLoading] = useState(false)
-  const [parentCategories, setParentCategories] = useState<any[]>([])
+  const [parentCategories, setParentCategories] = useState<CategoryType[]>([])
 
   const form = useForm<CategoryFormValues>({
     resolver: zodResolver(formSchema),
@@ -47,7 +55,7 @@ export function CategoryForm({ categoryId }: CategoryFormProps) {
 
   useEffect(() => {
     // Load danh mục cha
-    fetch("http://127.0.0.1:8000/api/categories?parent_only=true")
+    fetch("http://127.0.0.1:8000/api/categories")
       .then(res => res.json())
       .then(data => setParentCategories(data.data || []))
       .catch(err => console.error("Error loading parent categories", err))
@@ -66,7 +74,7 @@ export function CategoryForm({ categoryId }: CategoryFormProps) {
             name: data.name,
             slug: data.slug,
             type: data.type || undefined,
-            parent_id: data.parent_id ? String(data.parent_id) : undefined,
+            parent_id: data.parent_id ? data.parent_id : undefined,
           })
         })
         .catch(error => {
@@ -86,7 +94,7 @@ export function CategoryForm({ categoryId }: CategoryFormProps) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             ...data,
-            parent_id: data.parent_id ? parseInt(data.parent_id) : null,
+            parent_id: data.parent_id ? data.parent_id : null,
           }),
         }
       )

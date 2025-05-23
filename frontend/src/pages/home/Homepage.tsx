@@ -6,7 +6,6 @@ import ContainerBlock from "../../components/layouts/Block-container";
 import BlockVoucher from "../../components/home/Block-voucher";
 import BlockCollection from "../../components/home/Block-collection";
 import FromLogin from "../auth/FromLogin";
-import { Link } from "react-router-dom";
 
 const Homepage = () => {
   return (
@@ -27,9 +26,6 @@ const Homepage = () => {
         }}
       >
         <FromLogin />
-        <Link to="/checkout">Thanh Toán</Link>
-
-        <Link to="/men/gia-moi">Men</Link>
       </Box>
     </>
   );
