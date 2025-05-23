@@ -12,12 +12,14 @@ class ProductColorSize extends Model
 
     public $table = 'product_color_sizes';
     public $incrementing = false; // Khóa chính không tự động tăng
-    public $timestamps = false; // không sử dụng timestamp
     protected $primaryKey = ['color_id', 'size_id', 'product_id'];
     protected $fillable = [
         'color_id',
         'size_id',
         'product_id',
+        'quantity',
+        'created_at',
+        'updated_at',
     ];
 
     public function product_color()

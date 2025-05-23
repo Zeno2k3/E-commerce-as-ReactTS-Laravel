@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class ProductSize extends Model
 {
     public $table = 'product_size';
-    public $timestamps = false; // không sử dụng timestamp
     
     protected $primaryKey = 'id';
     protected $fillable = [
-        'size',
+        'name_size',
+        'created_at',
+        'updated_at',
     ];
 
     public function product_color_size()

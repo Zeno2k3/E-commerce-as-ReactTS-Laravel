@@ -10,7 +10,8 @@ class ProductColor extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'color',
+        'name_color',
+
     ];
 
     public function product_image()

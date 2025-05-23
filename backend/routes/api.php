@@ -9,3 +9,5 @@ use Illuminate\Support\Facades\Route;
 Route::apiResource('customers', CustomerController::class);
 Route::apiResource('products', ProductController::class);
 Route::apiResource('categories', CategoryController::class);
+Route::get('/categories/parents', [CategoryController::class, 'getParentCategories']);
+

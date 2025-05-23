@@ -15,12 +15,19 @@ return new class extends Migration
             $table->id();
             $table->foreignId('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->double('value');
+            $table->double('max_discount');
+            $table->double('min_discount'); 
             $table->date('start_time');
             $table->date('end_time');
-            $table->double('max_discount');
-            $table->double('min_discount');
             $table->string('code')->unique();
-            $table->boolean('is_active')->default(false);
+            $table->timestamps();
+        });
+
+        Schema::create('customer_voucher', function (Blueprint $table) {
+            $table->foreignId('customer_id')->constrained()->onDelete('cascade');
+            $table->foreignId('voucher_id')->constrained()->onDelete('cascade');
+            $table->primary(['customer_id', 'voucher_id']);
+            $table->enum('status', ['used', 'unused'])->default('unused');
             $table->timestamps();
         });
     }
@@ -31,5 +38,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('vouchers');
+        Schema::dropIfExists('customer_voucher');
     }
 };

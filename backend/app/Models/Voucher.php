@@ -10,8 +10,8 @@ class Voucher extends Model
     use hasFactory;
 
     public $table = 'vouchers';
-
     protected $primaryKey = 'id';
+
     protected $fillable = [
         'value',
         'start_time',
@@ -19,12 +19,10 @@ class Voucher extends Model
         'max_discount',
         'min_discount',
         'code',
-        'is_active' => false,
-        'customer_id',
     ];
 
-    public function customer()
+    public function voucher_to_customer()
     {
-        return $this->belongsTo(Customer::class, 'customer_id');
+        return $this->hasMany(CustomerVoucherModel::class);
     }
 }

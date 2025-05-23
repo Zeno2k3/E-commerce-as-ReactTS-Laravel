@@ -23,7 +23,8 @@ class ProductRequest extends FormRequest
     {
         return [
             'product_code'      => 'required|string|unique:products,product_code',
-            'name'              => 'required|string|max:255',
+            'name_product'      => 'required|string|max:255',
+            'slug'              => 'required|string|unique:products,slug,max:255',
             'description'       => 'nullable|string',
             'material'          => 'nullable|string',
             'customer_guide'    => 'nullable|string',
@@ -31,17 +32,18 @@ class ProductRequest extends FormRequest
             'discount_percent'  => 'nullable|numeric',
             'discount_price'    => 'nullable|numeric',
             'category_id'       => 'required|exists:categories,id',
-            'banner'             => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'banner'             => 'nullable|string|max:2048',
         ];
     }
     public function messages()
     {
         return [
-            'product_code' => ':attribute Mã sản phẩm là bắt buộc.',
+            'product_code' => ':attribute là bắt buộc.',
             'product_code.unique' => 'Mã sản phẩm đã tồn tại.',
-            'name' => ':attribute Tên sản phẩm là bắt buộc.',
-            'original_price' => ':attribute Giá gốc là bắt buộc.',
-            'category_id' => ':attribute Danh mục là bắt buộc.',  
+            'name_product' => ':attribute là bắt buộc.',
+            'slug' => ':attribute là bắt buộc.',
+            'original_price' => ':attribute là bắt buộc.',
+            'category_id' => ':attribute  là bắt buộc.',
             'category_id.exists' => 'Danh mục không tồn tại.',
             'banner.image' => 'Tệp tải lên phải là hình ảnh.',
             'banner.mimes' => 'Hình ảnh phải có định dạng jpeg, png, jpg hoặc gif.',
@@ -53,7 +55,7 @@ class ProductRequest extends FormRequest
     {
         return [
             'product_code' => 'Mã sản phẩm',
-            'name' => 'Tên sản phẩm',
+            'name_product' => 'Tên sản phẩm',
             'description' => 'Mô tả sản phẩm',
             'material' => 'Chất liệu',
             'customer_guide' => 'Hướng dẫn sử dụng',

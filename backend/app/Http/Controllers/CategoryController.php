@@ -48,10 +48,34 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $category = Category::find($id);
+        if (!$category) {
+            return response()->json([
+                "success" => false,
+                'message' => 'Danh mục không tồn tại',
+            ], 404);
+        }
+
+        return response()->json([
+            "success" => true,
+            'data' => $category,
+            'message' => 'Lấy danh mục thành công',
+        ], 200);
     }
+
+    public function getParentCategories()
+    {
+        $categories = Category::whereNull('parent_id')->select('id', 'name')->get();
+
+        return response()->json([
+            "success" => true,
+            "data" => $categories,
+            "message" => "Lấy danh sách danh mục cha thành công"
+        ], 200);
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -64,9 +88,25 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
-        //
+        $category = Category::find($id);
+
+        if (!$category) {
+            return response()->json([
+                "success" => false,
+                'message' => 'Danh mục không tồn tại',
+            ], 404);
+        }
+
+        $category->fill($request->all());
+        $category->save();
+
+        return response()->json([
+            "success" => true,
+            'data' => $category,
+            'message' => 'Cập nhật danh mục thành công',
+        ], 200);
     }
 
     /**
