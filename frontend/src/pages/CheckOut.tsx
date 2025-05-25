@@ -413,15 +413,17 @@ const CheckOut = () => {
               {(isTriger ? OderItems : [OderItems[0]]).map((item, index) => (
                 <React.Fragment key={index}>
                   <OderItem
-                    name={item.name}
-                    image={item.image}
-                    color={item.color}
-                    colorName={item.nameColor}
-                    size={item.size}
-                    number={item.number}
-                    percent={item.percent}
-                    price={item.price}
-                    TotalPrice={item.TotalPrice}
+                    OderObject={{
+                      image: item.image,
+                      colorImg: item.color,
+                      name: item.name,
+                      size: item.size,
+                      number: item.number,
+                      percent: item.percent,
+                      price: item.price,
+                      TotalPrice: item.TotalPrice,
+                      colorName: item.nameColor,
+                    }}
                   />
                   <Divider />
                 </React.Fragment>

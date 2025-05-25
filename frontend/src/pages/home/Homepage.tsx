@@ -25,7 +25,7 @@ const Homepage = () => {
           height: "100vh",
         }}
       >
-        <FromLogin />
+        /* <FromLogin />
       </Box>
     </>
   );

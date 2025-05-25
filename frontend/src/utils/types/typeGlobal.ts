@@ -13,3 +13,14 @@ export interface MenuItemType {
     name: string;
     url: string;
 }
+export interface OderType {
+    image: string;
+    name: string;
+    colorImg: string;
+    colorName: string;
+    size: string;
+    number: number;
+    percent: string;
+    price: number;
+    TotalPrice: number;
+}

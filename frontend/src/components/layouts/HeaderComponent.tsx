@@ -18,6 +18,7 @@ import theme from "../../utils/constants/theme";
 import MenuContent from "./MenuContent";
 
 import { initialListMenu } from "../../utils/constants/ListMenu";
+import DialogOder from "../oder/DialogOder";
 
 const Pages = [
   {
@@ -33,13 +34,15 @@ const Pages = [
   {
     name: "Giỏ Hàng",
     image: iconGioHang,
-    url: "checkout",
+    url: "",
   },
 ];
 
 const ChuongTringDB = ["Sản Phẩm Mới", "Canifas"];
 
 const HeaderComponent2 = () => {
+
+  const [isOpenOrder, setIsOpenOder] = useState(false);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const toggleMenu = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -56,7 +59,7 @@ const HeaderComponent2 = () => {
 
   return (
     <>
-      {openIndex != null && (
+      {(openIndex != null || isOpenOrder != false) && (
         <Box
           sx={{
             position: "fixed",
@@ -64,8 +67,8 @@ const HeaderComponent2 = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            zIndex: 40,
+            backgroundColor: "rgba(0, 0, 0, 0.2)",
+            zIndex: isOpenOrder ? 400 : 40,
           }}
         />
       )}
@@ -79,7 +82,7 @@ const HeaderComponent2 = () => {
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 100,
+          zIndex: 150,
           backgroundColor: "#fff",
           flexDirection: "column",
         }}
@@ -227,7 +230,7 @@ const HeaderComponent2 = () => {
                   </Typography>
                 </Stack>
               );
-              return page.url ? (
+              return page.url != "" ? (
                 <Link
                   to={`/${page.url}`}
                   key={index}
@@ -236,13 +239,16 @@ const HeaderComponent2 = () => {
                   {content}
                 </Link>
               ) : (
-                <Box key={index}>{content}</Box>
+                <Typography key={index} onClick={() => { setIsOpenOder(true) }}>{content}</Typography>
               );
             })}
           </Box>
         </Box>
         <Divider variant={"fullWidth"} />
       </Box>
+      {isOpenOrder && (
+        <DialogOder onClick={() => { setIsOpenOder(false) }} />
+      )}
       <Box sx={{ height: `${headerHeight}px` }} />
     </>
   );
