@@ -10,3 +10,4 @@ Route::apiResource('customers', CustomerController::class);
 Route::apiResource('products', ProductController::class);
 Route::apiResource('categories', CategoryController::class);
 
+

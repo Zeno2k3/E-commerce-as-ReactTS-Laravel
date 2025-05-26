@@ -20,7 +20,6 @@ import iconTitle3 from "../assets/svg/icon-checkout-left03.svg";
 import iconTitle4 from "../assets/svg/icon-checkout-left04.svg";
 
 import checkout from "../assets/image/image-checkout.png";
-import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 
 import Money from "../assets/svg/img-radiocheckout.svg";
 import VnPay from "../assets/svg/img-vnpay.svg";
@@ -37,6 +36,7 @@ import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownR
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import React from "react";
 import ButtonAccount from "../components/my-account/ui/ButtonAccount";
+import TitleFreeShip from "../components/oder/TitleFreeShip";
 
 const steps = ["Giỏ hàng", "Thanh toán", "Hoàn tất"];
 
@@ -327,20 +327,7 @@ const CheckOut = () => {
             <Title>
               <img src={iconTitle2} /> Phương thức vận chuyển
             </Title>
-            <Typography
-              sx={{
-                fontSize: "13px",
-                color: "#74aa50",
-                display: "flex",
-                alignItems: "center",
-                mt: "12px",
-              }}
-            >
-              <CheckCircleRoundedIcon
-                sx={{ width: "16px", mr: "10px", color: alpha("#74aa50", 0.4) }}
-              />
-              Đơn hàng được miễn phí vận chuyển
-            </Typography>
+            <TitleFreeShip />
             <OptionBox sx={{ p: "24px", width: "100%", my: "10px" }}>
               <RadioButtonCheckedIcon />
               <Stack
