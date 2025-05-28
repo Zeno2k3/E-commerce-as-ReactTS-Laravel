@@ -7,7 +7,7 @@ interface PropsRouter {
     name: string;
     url: string;
   }>;
-  currentLink?: string;
+  currentLink: string;
   sx?: SxProps<Theme>;
 }
 

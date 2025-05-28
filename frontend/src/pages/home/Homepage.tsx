@@ -1,11 +1,10 @@
-import { Box, Divider } from "@mui/material";
+import { Divider } from "@mui/material";
 import { BannerSlider, BlockProductComponent } from "../../components";
 
 import image from "../../assets/image/chongnang_blockhomepage_desktop-140425.webp";
 import ContainerBlock from "../../components/layouts/Block-container";
 import BlockVoucher from "../../components/home/Block-voucher";
 import BlockCollection from "../../components/home/Block-collection";
-import FromLogin from "../auth/FromLogin";
 
 const Homepage = () => {
   return (
@@ -16,7 +15,7 @@ const Homepage = () => {
       <BlockVoucher />
       <BlockCollection />
       <BlockProductComponent title={"Áo chống nắng"} banner={image} />
-      <Box
+      {/* <Box
         sx={{
           display: "flex",
           width: "100%",
@@ -25,8 +24,9 @@ const Homepage = () => {
           height: "100vh",
         }}
       >
-        /* <FromLogin />
+          <FromLogin /> 
       </Box>
+      */}
     </>
   );
 };

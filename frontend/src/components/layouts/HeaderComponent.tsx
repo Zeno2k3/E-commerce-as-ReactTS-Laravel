@@ -6,7 +6,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 import logo from "../../assets/image/logo.png";
 import iconCuaHang from "../../assets/svg/icon-cuahang.svg";
@@ -209,17 +209,23 @@ const HeaderComponent2 = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     cursor: "pointer",
-                    mr: "19px",
+                    mr: "5px",
                   }}
                 >
-                  <Box
-                    component={"img"}
-                    src={page.image}
-                    sx={{
-                      width: "24px",
-                      mt: "6px",
-                    }}
-                  />
+                  <Link
+                    to={`/${page.url}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <Box
+                      component={"img"}
+                      src={page.image}
+                      sx={{
+                        width: "24px",
+                        mt: "6px",
+                      }}
+                    />
+                  </Link>
+
                   <Typography
                     sx={{
                       fontWeight: 500,
@@ -231,15 +237,39 @@ const HeaderComponent2 = () => {
                 </Stack>
               );
               return page.url != "" ? (
-                <Link
-                  to={`/${page.url}`}
-                  key={index}
-                  style={{ textDecoration: "none" }}
-                >
+                <React.Fragment key={index}>
                   {content}
-                </Link>
+                </React.Fragment>
               ) : (
-                <Typography key={index} onClick={() => { setIsOpenOder(true) }}>{content}</Typography>
+                <Typography key={index} onClick={() => { setIsOpenOder(true) }}>{
+                  <Stack
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      cursor: "pointer",
+                      mr: "5px",
+                    }}
+                  >
+                    <Box
+                      component={"img"}
+                      src={page.image}
+                      sx={{
+                        width: "24px",
+                        mt: "6px",
+                      }}
+                    />
+                    <Typography
+                      sx={{
+                        fontWeight: 500,
+                        fontSize: "13px",
+                      }}
+                    >
+                      {page.name}
+                    </Typography>
+                  </Stack>
+
+                }</Typography>
               );
             })}
           </Box>

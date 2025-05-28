@@ -48,7 +48,6 @@ const DropdownMenuSection: React.FC<DropdownMenuSectionProps> = ({
     );
   };
 
-
   const renderItems = () =>
     items.map((item, index) => (
       <Box

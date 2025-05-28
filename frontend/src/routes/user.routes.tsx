@@ -8,7 +8,7 @@ import MembershipCard from "../pages/accounts/MembershipCard";
 import MyAccount from "../pages/accounts/MyAccount";
 import Oder from "../pages/accounts/Oder";
 import PromoCode from "../pages/accounts/PromoCode";
-import ProductDetails from "../pages/ProductDetails";
+import ProductDetails from "../components/products/ProductDetails";
 import AccessoriesCategory from "../pages/PageCategory/AccessoriesCategory";
 import BoyCategory from "../pages/PageCategory/BoyCategory";
 import GirlCategory from "../pages/PageCategory/GirlCategory";
@@ -31,7 +31,7 @@ const user = [
       { path: "girl", element: <GirlCategory /> },
       { path: "boy", element: <BoyCategory /> },
       { path: "accessories", element: <AccessoriesCategory /> },
-      { path: "product/:slg-:ProductID", element: <ProductDetails /> },
+      { path: "product/:slugID", element: <ProductDetails /> },
       {
         path: "my-account",
         element: <MyAccount />,

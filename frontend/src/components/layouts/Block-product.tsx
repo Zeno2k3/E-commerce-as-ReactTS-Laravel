@@ -22,11 +22,12 @@ interface BlockProductProps {
 const Products = [
   {
     id: 1,
-    masp: "3OT25S001-SA405",
+    masp: "3OT25S001",
     name: "Áo khoác da beo",
     price: "299.000 đ",
     priceSale: "311.000 đ",
     percent: "14%",
+    slg: 'ao-khoac-da-beo',
     colorVariants: [
       {
         image: image2,
@@ -42,9 +43,10 @@ const Products = [
   },
   {
     id: 2,
-    masp: "3OT25S001-SA406",
+    masp: "3OT25S001",
     name: "Áo khoác da mèo",
     price: "299.000 đ",
+    slg: 'ao-khoac-da-meo',
     priceSale: "311.000 đ",
     percent: "14%",
     colorVariants: [
@@ -62,9 +64,10 @@ const Products = [
   },
   {
     id: 3,
-    masp: "3OT25S001-SA407",
+    masp: "3OT25S001",
     name: "Áo khoác da thú",
     price: "299.000 đ",
+    slg: 'ao-khoac-da-thu',
     priceSale: "311.000 đ",
     percent: "14%",
     colorVariants: [
@@ -86,8 +89,9 @@ const Products = [
   },
   {
     id: 3,
-    masp: "3OT25S001-SA407",
+    masp: "3OT25S001",
     name: "Áo khoác da chim",
+    slg: 'ao-khoac-da-chim',
     price: "299.000 đ",
     priceSale: "311.000 đ",
     percent: "14%",
@@ -110,9 +114,10 @@ const Products = [
   },
   {
     id: 4,
-    masp: "3OT25S001-SA407",
+    masp: "3OT25S001",
     name: "Áo khoác da trâu",
     price: "299.000 đ",
+    slg: 'ao-khoac-da-trau',
     priceSale: "311.000 đ",
     percent: "14%",
     colorVariants: [
@@ -135,8 +140,9 @@ const Products = [
   },
   {
     id: 5,
-    masp: "3OT25S001-SA407",
+    masp: "3OT25S001",
     name: "Áo khoác da người",
+    slg: 'ao-khoac-da-nguoi',
     price: "299.000 đ",
     priceSale: "311.000 đ",
     percent: "14%",
@@ -157,8 +163,9 @@ const Products = [
   },
   {
     id: 6,
-    masp: "3OT25S001-SA407",
+    masp: "3OT25S001",
     name: "Áo khoác da chó",
+    slg: 'ao-khoac-da-cho',
     price: "299.000 đ",
     priceSale: "311.000 đ",
     percent: "14%",
@@ -182,8 +189,9 @@ const Products = [
   },
   {
     id: 7,
-    masp: "3OT25S001-SA407",
+    masp: "3OT25S001",
     name: "Áo khoác da bò",
+    slg: 'ao-khoac-da-bo',
     price: "299.000 đ",
     priceSale: "311.000 đ",
     percent: "14%",
@@ -281,6 +289,8 @@ const BlockProduct: React.FC<BlockProductProps> = ({
                   sxDiv={{ margin: "0px 0px 60px", padding: "0px 12px" }}
                   sxImg={{ width: "379px" }}
                   name={product.name}
+                  slg={product.slg}
+                  ProductID={product.masp}
                   price={product.price}
                   priceSale={product.priceSale}
                   percent={product.percent}
@@ -336,6 +346,8 @@ const BlockProduct: React.FC<BlockProductProps> = ({
                 sxImg={{ width: "379px" }}
                 name={product.name}
                 price={product.price}
+                slg={product.slg}
+                ProductID={product.masp}
                 priceSale={product.priceSale}
                 percent={product.percent}
                 swatchColor={product.colorVariants}
