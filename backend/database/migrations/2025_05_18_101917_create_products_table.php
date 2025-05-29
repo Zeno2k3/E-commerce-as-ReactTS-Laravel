@@ -30,13 +30,15 @@ return new class extends Migration
         Schema::create('product_color', function (Blueprint $table) {
             $table->id();
             $table->string('name_color')->unique();
+            $table->string('image_color')->unique();
             $table->timestamps();
         });
 
         Schema::create('product_color_images', function (Blueprint $table) {
-            $table->id();
+            $table->primary(['product_id', 'color_id']);
             $table->foreignId('color_id')->references('id')->on('product_color')->onDelete('cascade');
-            $table->string('url_image')->unique();
+            $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->string('image')->unique();
             $table->timestamps();
         });
 

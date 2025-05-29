@@ -15,7 +15,7 @@ export default function EditCategoryPage({ params }: { params: { id: string } })
         </Button>
         <h1 className="text-3xl font-bold">Chỉnh sửa danh mục</h1>
       </div>
-      <CategoryForm categoryId={params.id} />
+      <CategoryForm categoryId={Number(params.id)} />
     </div>
   )
 }

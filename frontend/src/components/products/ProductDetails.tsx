@@ -236,7 +236,7 @@ const ProductDetails = () => {
             <Divider
               sx={{
                 mt: "30px",
-                mb: "20px",
+                mb: "10px",
                 backgroundColor: alpha("#d9d9d9", 0.1),
               }}
             />

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -32,39 +33,44 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        try {
-            // Tạo sản phẩm với dữ liệu (trừ banner)
-            $productData = $request->except('banner');
-            $product = Product::create($productData);
+        // try {
+        //     // Tạo sản phẩm với dữ liệu (trừ banner)
+        //     $productData = $request->except('banner');
+        //     $product = Product::create($productData);
 
-            $bannerPath = null;
+        //     $bannerPath = null;
 
-            // Xử lý banner image
-            if ($request->hasFile('banner')) {
-                // Case 1: File upload
-                $bannerPath = $this->handleFileUpload($request->file('banner'));
-                
-            } elseif ($request->filled('banner') && filter_var($request->banner, FILTER_VALIDATE_URL)) {
-                // Case 2: URL image
-                $bannerPath = $this->handleImageUrl($request->banner);
-            }
+        //     // Xử lý banner image
+        //     if ($request->hasFile('banner')) {
+        //         // Case 1: File upload
+        //         $bannerPath = $this->handleFileUpload($request->file('banner'));
 
-            // Cập nhật banner path nếu có
-            if ($bannerPath) {
-                $product->update(['banner' => $bannerPath]);
-            }
+        //     } elseif ($request->filled('banner') && filter_var($request->banner, FILTER_VALIDATE_URL)) {
+        //         // Case 2: URL image
+        //         $bannerPath = $this->handleImageUrl($request->banner);
+        //     }
 
-            return response()->json([
-                'success' => true,
-                'data' => $product->fresh(), // Reload để lấy dữ liệu mới nhất
-                'message' => 'Thêm sản phẩm thành công',
-            ], 201);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Có lỗi xảy ra khi thêm sản phẩm',
-                'error' => $e->getMessage(),
-            ], 500);
+        //     // Cập nhật banner path nếu có
+        //     if ($bannerPath) {
+        //         $product->update(['banner' => $bannerPath]);
+        //     }
+
+        //     return response()->json([
+        //         'success' => true,
+        //         'data' => $product->fresh(), // Reload để lấy dữ liệu mới nhất
+        //         'message' => 'Thêm sản phẩm thành công',
+        //     ], 201);
+        // } catch (\Exception $e) {
+        //     return response()->json([
+        //         'success' => false,
+        //         'message' => 'Có lỗi xảy ra khi thêm sản phẩm',
+        //         'error' => $e->getMessage(),
+        //     ], 500);
+        // }
+
+        $category = Category::where("name", $request->category_name)->first();
+        if ($category == null) {
+            return response()->json(['error' => 'Danh mục không tồn tại'], 422);
         }
     }
 
