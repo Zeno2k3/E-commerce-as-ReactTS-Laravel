@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\VoucherRequest;
 use App\Models\Voucher;
-use Illuminate\Http\Request;
 
 class VoucherController extends Controller
 {
@@ -13,7 +12,12 @@ class VoucherController extends Controller
      */
     public function index()
     {
-        //
+        $voucher = Voucher::all();
+        return response()->json([
+            "success" => true,
+            'data' => $voucher,
+            'message' => 'Lấy danh sách danh sách voucher thành công',
+        ]);
     }
 
     /**
@@ -53,10 +57,70 @@ class VoucherController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id) {}
+    public function update(VoucherRequest $request, string $id)
+    {
+        $voucher = Voucher::find($id);
+        if (!$voucher) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Voucher không tồn tại'
+            ], 404);
+        }
+
+        if ($request->filled('value')) {
+            $voucher->value = $request->value;
+        }
+        if ($request->filled('max_discount')) {
+            $voucher->max_discount = $request->max_discount;
+        }
+        if ($request->filled('min_order_value')) {
+            $voucher->min_order_value = $request->min_order_value;
+        }
+        if ($request->filled('start_time')) {
+            $voucher->start_time = $request->start_time;
+        }
+        if ($request->filled('end_time')) {
+            $voucher->end_time = $request->end_time;
+        }
+        if ($request->filled('code')) {
+            $voucher->code = $request->code;
+        }
+        if ($request->filled('type')) {
+            $voucher->type = $request->type;
+        }
+        if ($request->filled('is_active')) {
+            $voucher->is_active = $request->is_active;
+        }
+        if ($voucher->isDirty()) {
+            $voucher->save();
+            return response()->json([
+                'success' => true,
+                'message' => 'Voucher đã thay đổi'
+            ]);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Không có dữ liệu nào được thay đổi'
+        ]);
+    }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id) {}
+    public function destroy(string $id)
+    {
+        $voucher = Voucher::find($id);
+        if (!$voucher) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Voucher không tồn tại'
+            ], 404);
+        }
+        $voucher->delete();
+        return response()->json([
+            'success' => true,
+            'message' => 'Voucher đã bị xóa'
+        ]);
+    }
 }

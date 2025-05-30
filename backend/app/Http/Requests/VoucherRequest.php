@@ -21,13 +21,57 @@ class VoucherRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        $id = $this->route()->voucher;
+        $codeRules = 'required|string|unique:vouchers,code';
+
+        if ($id) {
+            $codeRules .= ",{$id}";
+            $rules = [];
+
+            $value = $this->value;
+            $max_discount = $this->max_discount;
+            $min_order_value = $this->min_order_value;
+            $start_time = $this->start_time;
+            $end_time = $this->end_time;
+            $code = $this->code;
+            $type = $this->type;
+            $is_active = $this->is_active;
+
+            if ($value) {
+                $rules['value'] = 'numeric|min:0';
+            }
+            if ($max_discount) {
+                $rules['max_discount'] = 'numeric|min:0';
+            }
+            if ($min_order_value) {
+                $rules['min_order_value'] = 'numeric|min:0';
+            }
+            if ($start_time) {
+                $rules['start_time'] = 'date';
+            }
+            if ($end_time) {
+                $rules['end_time'] = 'date|after_or_equal:start_time';
+            }
+            if ($code) {
+                $rules['code'] = $codeRules;
+            }
+            if ($type) {
+                $rules['type'] = 'in:fixed,percent';
+            }
+            if ($is_active) {
+                $rules['is_active'] = 'boolean';
+            }
+            return $rules;
+        }
+
         return [
             'value' => 'required|numeric|min:0',
             'max_discount' => 'nullable|numeric|min:0',
             'min_order_value' => 'required|numeric|min:0',
             'start_time' => 'required|date',
             'end_time' => 'required|date|after_or_equal:start_time',
-            'code' => 'required|string|unique:vouchers,code',
+            'code' => $codeRules,
             'type' => 'required|in:fixed,percent',
             'is_active' => 'boolean',
         ];
