@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ColorRequest;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Str;
 use App\Models\ProductColor;
 
 class ColorController extends Controller
@@ -33,7 +31,6 @@ class ColorController extends Controller
      */
     public function store(ColorRequest $request): JsonResponse
     {
-
 
         $validatedData = $request->validated();
         $imagePath = null;
@@ -66,12 +63,56 @@ class ColorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id) {
-        
+    public function update(ColorRequest $request, string $id)
+    {
+        $color = ProductColor::find($id);
+
+        if (!$color) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Color không tồn tại'
+            ], 404);
+        }
+
+        if ($request->filled('name_color')) {
+            $color->name_color = $request->name_color;
+        }
+        if ($request->filled('image_color')) {
+            $color->image_color = $request->image_color;
+        }
+
+        if ($color->isDirty()) {
+            $color->save();
+            return response()->json([
+                'success' => true,
+                'message' => 'Color đã thay đổi'
+            ]);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Không có dữ liệu nào được thay đổi'
+        ], 200);
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id) {}
+    public function destroy(string $id)
+    {
+        $color = ProductColor::find($id);
+
+        if (!$color) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Color không tồn tại'
+            ], 404);
+        }
+        $color->delete();
+        return response()->json([
+            'success' => true,
+            'message' => 'Color đã xóa',
+        ]);
+    }
 }

@@ -21,8 +21,24 @@ class ColorRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route()->color;
+        $nameRule = 'required|string|unique:product_color,name_color';
+        if ($id) {
+            $nameRule .= `,{$id}`;
+            $name_color = $this->name_color;
+            $image_color = $this->image_color;
+            $rules = [];
+            if ($name_color) {
+                $rules['name_color'] = 'string|unique:product_color,name_color';
+            }
+            if ($image_color) {
+                $rules['image_color'] = 'image|mimes:jpeg,png,jpg,gif,webp|max:2048';
+            }
+            return $rules;
+        }
+
         return [
-            'name_color' => 'required|string|unique:product_color,name_color',
+            'name_color' => $nameRule,
             'image_color' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048'
         ];
     }

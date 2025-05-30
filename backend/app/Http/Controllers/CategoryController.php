@@ -93,7 +93,7 @@ class CategoryController extends Controller
             "success" => true,
             'data' => $category,
             'message' => 'Cập nhật danh mục thành công',
-        ], 200);
+        ]);
     }
 
     /**
