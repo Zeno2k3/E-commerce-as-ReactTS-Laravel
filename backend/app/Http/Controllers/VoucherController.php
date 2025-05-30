@@ -16,7 +16,7 @@ class VoucherController extends Controller
         return response()->json([
             "success" => true,
             'data' => $voucher,
-            'message' => 'Lấy danh sách danh sách voucher thành công',
+            'message' => 'Lấy danh sách voucher thành công',
         ]);
     }
 
