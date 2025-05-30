@@ -17,8 +17,10 @@ class Voucher extends Model
         'start_time',
         'end_time',
         'max_discount',
-        'min_discount',
+        'min_order_value',
         'code',
+        'type',
+        'is_active',
     ];
 
     public function voucher_to_customer()
