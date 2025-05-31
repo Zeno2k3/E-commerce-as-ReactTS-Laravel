@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('customers', CustomerController::class);
 Route::get('customers/{customer}/addresses', [CustomerController::class, 'getAddresses']);
+Route::get('customers/{customer}/vouchers', [CustomerController::class, 'getVouchers']);
+
+
 
 Route::apiResource('products', ProductController::class);
 Route::apiResource('categories', CategoryController::class);

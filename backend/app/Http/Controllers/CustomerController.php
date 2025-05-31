@@ -14,7 +14,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::latest()->get();
+        $customers = Customer::all();
         return response()->json([
             "success" => true,
             'message' => 'Lấy danh sách khách hàng thành công',
@@ -37,7 +37,13 @@ class CustomerController extends Controller
     {
         $customers = new Customer;
         $customers->fill($request->all());
-        $customers->save();
+
+        if (!$customers->save()) {
+            return response()->json([
+                "success" => false,
+                'message' => 'Thêm khách hàng thất bại',
+            ], 404);
+        }
         return response()->json([
             "success" => true,
             'message' => 'Thêm khách hàng thành công',
@@ -55,6 +61,11 @@ class CustomerController extends Controller
 
     public function getAddresses(Customer $customer)
     {
-        return $customer->addresses;
+        return $customer->addresses();
+    }
+
+    public function getVouchers(Customer $customer)
+    {
+        return $customer->vouchers();
     }
 }

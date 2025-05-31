@@ -13,7 +13,6 @@ class Product extends Model
     protected $fillable = [
         'product_code',
         'name_product',
-        'slug',
         'description',
         'material',
         'customer_guide',
@@ -31,16 +30,18 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'category_id'); // thuộc về Category
     }
 
-    public function oderDetails()
+    public function customers()
     {
-        return $this->hasMany(OrderDetail::class);
+        return $this->belongsToMany(Customer::class)->using(Favorite::class);
     }
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class)->using(OrderDetail::class);
+    }
+
+    
     public function productColorSize()
     {
         return $this->hasMany(ProductColorSize::class);
-    }
-    public function faviorites()
-    {
-        return $this->hasMany(Favorite::class);
     }
 }

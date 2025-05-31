@@ -67,11 +67,7 @@ class ProductController extends Controller
         //         'error' => $e->getMessage(),
         //     ], 500);
         // }
-
-        $category = Category::where("name", $request->category_name)->first();
-        if ($category == null) {
-            return response()->json(['error' => 'Danh mục không tồn tại'], 422);
-        }
+         
     }
 
     /**

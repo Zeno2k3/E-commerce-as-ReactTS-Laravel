@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CustomerVoucherModel extends Model
+class CustomerVoucher extends Model
 {
     public $table = 'customer_voucher';
     protected $primaryKey = ['customer_id', 'voucher_id'];

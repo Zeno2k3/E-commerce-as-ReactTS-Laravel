@@ -4,20 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\CustomerVoucher;
 
 class Customer extends Model
 {
     use HasFactory; // kết nôi database tương ứng
-    // Khai báo các trường thuộc tính tương ứng với database.
-    protected $table = 'customers';
-    protected $primaryKey = 'id';
 
     // Gán nhiều thuộc tính cùng lúc;
     protected $fillable = [
         'name',
         'email',
         'phone',
-        'gender ',
+        'gender',
         'otp_code',
         'otp_expires_at',
     ];
@@ -25,7 +23,7 @@ class Customer extends Model
     protected $casts = [
         'otp_expires_at' => 'datetime',
     ];
-    
+
 
     // quan hệ
     public function addresses()
@@ -38,10 +36,10 @@ class Customer extends Model
     }
     public function vouchers()
     {
-        return $this->hasMany(Voucher::class); // chỉ định có nhiều voucher thuộc về Customer
+        return $this->belongsToMany(Voucher::class)->using(CustomerVoucher::class);
     }
     public function favorites()
     {
-        return $this->hasMany(Favorite::class); // chỉ định có nhiều favorite thuộc về Customer
+        return $this->belongsToMany(Product::class)->using(Favorite::class);
     }
 }

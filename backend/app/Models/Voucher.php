@@ -23,8 +23,8 @@ class Voucher extends Model
         'is_active',
     ];
 
-    public function voucher_to_customer()
+    public function customers()
     {
-        return $this->hasMany(CustomerVoucherModel::class);
+        return $this->belongsToMany(Customer::class, 'customer_voucher', 'voucher_id', 'customer_id');
     }
 }

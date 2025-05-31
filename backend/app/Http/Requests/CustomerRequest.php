@@ -24,25 +24,39 @@ class CustomerRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'nullable|email|max:255',
-            'phone' => 'required|string|max:10',
-            'otp' => 'required|string|max:6',
+            'phone' => [
+                'bail',
+                'required',
+                'string',
+                'regex:/^(03|05|07|08|09)[0-9]{8}$/',
+                'unique:customers,phone',
+            ],
+            'otp' => 'bail|required|string|regex:/^[0-9]{4}$/',
             'otp_time' => 'required|date_format:Y-m-d H:i:s',
         ];
     }
     public function messages()
     {
         return [
-            'name.required' => ':attributes là bắt buộc',
-            'name.max' => ':attributes không được vượt quá 255 ký tự',
-            'email.email' => ':attributes email không hợp lệ',
-            'email.max' => ':attributes không được vượt quá 255 ký tự',
-            'phone.required' => ':attributes  là bắt buộc',
-            'phone.string' => ':attributes phải là một chuỗi ký tự',
-            'phone.max' => ':attributes không được vượt quá 10 ký tự',
-            'otp.required' => ':attributes là bắt buộc',
-            'otp.string' => ':attributes phải là một chuỗi ký tự',
-            'otp.max' => ':attributes không được vượt quá 6 ký tự',
-            'otp_time.required' => ':attributes là bắt buộc',
+            'name.required' => ':attribute là bắt buộc.',
+            'name.string' => ':attribute phải là chuỗi ký tự.',
+            'name.max' => ':attribute không được vượt quá 255 ký tự.',
+
+            'email.email' => ':attribute không đúng định dạng.',
+            'email.max' => ':attribute không được vượt quá 255 ký tự.',
+
+            'phone.required' => ':attribute là bắt buộc.',
+            'phone.string' => ':attribute phải là chuỗi ký tự.',
+            'phone.regex' => ':attribute chỉ được chứa các chữ số (0-9) hoặc hơn 10 ký tự',
+            'phone.unique' => ':attribute đã tồn tại trong hệ thống.',
+
+            'otp.required' => ':attribute là bắt buộc.',
+            'otp.string' => ':attribute phải là chuỗi ký tự.',
+            'otp.regex' => ':attribute chỉ được chứa các chữ số (0-9) hoặc hơn 10 ký tự',
+            'otp.size' => ':attribute phải gồm đúng 4 chữ số.',
+
+            'otp_time.required' => ':attribute là bắt buộc.',
+            'otp_time.date_format' => ':attribute phải có định dạng Y-m-d H:i:s.',
         ];
     }
     public function attributes()

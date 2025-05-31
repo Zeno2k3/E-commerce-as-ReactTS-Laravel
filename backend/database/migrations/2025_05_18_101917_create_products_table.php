@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('product_code')->unique();
             $table->foreignId('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('name_product');
-            $table->string('slug');
             $table->longText('description')->nullable();
             $table->longText('material')->nullable();
             $table->longText('customer_guide')->nullable();
@@ -27,33 +26,41 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('colors', function (Blueprint $table) {
+            $table->id();
+            $table->string('color_name')->unique();
+            $table->string('color_image');
+            $table->timestamps();
+        });
+
         Schema::create('product_color', function (Blueprint $table) {
             $table->id();
-            $table->string('name_color')->unique();
-            $table->string('image_color')->unique();
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->foreignId('color_id')->constrained('colors')->onDelete('cascade'); // Đã sửa: references('id')->on('colors')
+            $table->unique(['product_id', 'color_id']); // Đặt khóa chính sau khi khai báo cột
             $table->timestamps();
         });
 
-        Schema::create('product_color_images', function (Blueprint $table) {
-            $table->primary(['product_id', 'color_id']);
-            $table->foreignId('color_id')->references('id')->on('product_color')->onDelete('cascade');
-            $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->string('image')->unique();
+        Schema::create('images', function (Blueprint $table) {
+            $table->id();
+            $table->string('url');
+            $table->foreignId('product_color_id')->references('id')->on('product_color')->onDelete('cascade');
             $table->timestamps();
         });
 
-        Schema::create('product_sizes', function (Blueprint $table) {
+        Schema::create('sizes', function (Blueprint $table) {
             $table->id();
             $table->string('name_size')->unique();
             $table->timestamps();
         });
 
         Schema::create('product_color_size', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreignId('color_id')->references('id')->on('product_color')->onDelete('cascade');
-            $table->foreignId('size_id')->references('id')->on('product_sizes')->onDelete('cascade');
-            $table->primary(['product_id', 'color_id', 'size_id']);
-            $table->integer('quantity')->unique();
+            $table->foreignId('color_id')->references('id')->on('colors')->onDelete('cascade');
+            $table->foreignId('size_id')->references('id')->on('sizes')->onDelete('cascade');
+            $table->unique(['product_id', 'color_id', 'size_id']);
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
@@ -62,10 +69,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
-        Schema::dropIfExists('product_color');
-        Schema::dropIfExists('product_sizes');
-        Schema::dropIfExists('product_color_size');
-        Schema::dropIfExists('product_images');
+        Schema::dropIfExists('product_color_size'); // Phụ thuộc vào product_color và sizes
+        Schema::dropIfExists('images');             // Phụ thuộc vào product_color
+        Schema::dropIfExists('product_color');      // Phụ thuộc vào products và colors
+        Schema::dropIfExists('sizes');              // Bảng cơ bản
+        Schema::dropIfExists('colors');             // Bảng cơ bản
+        Schema::dropIfExists('products');           // Bảng cơ bản
     }
 };
