@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Http\Requests\CustomerRequest;
+use App\Http\Resources\AddressResource;
+
 
 class CustomerController extends Controller
 {
@@ -45,31 +46,15 @@ class CustomerController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id) {}
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
         //
+    }
+
+    public function getAddresses(Customer $customer)
+    {
+        return $customer->addresses;
     }
 }

@@ -25,7 +25,6 @@ class OrderRequest extends FormRequest
         $statuses = implode(',', [Order::STATUS_RECEIVED, Order::STATUS_PENDING]);
         $paymentMethods = implode(',', [Order::PAYMENT_CASH, Order::PAYMENT_BANK, Order::PAYMENT_MOMO]);
         return [
-
             'customer_id' => 'required|integer|exists:customers,id',
             'total_amount' => 'required|numeric|min:0',
             'shipping_fee' => 'nullable|numeric|min:0',

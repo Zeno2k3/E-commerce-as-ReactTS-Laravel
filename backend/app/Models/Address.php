@@ -11,6 +11,9 @@ class Address extends Model
     protected $table = 'addresses';
     protected $primaryKey = 'id';
 
+    const PROPERTY_TYPE_HOME = 'Nhà riêng';
+    const PROPERTY_TYPE_COMPANY = 'Công ty';
+
     protected $fillable = [
         'customer_id',
         'province',
