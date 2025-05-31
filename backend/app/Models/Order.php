@@ -9,19 +9,25 @@ class Order extends Model
 {
 
     use HasFactory;
+    const STATUS_RECEIVED = 'Đã nhận';
+    const STATUS_PENDING = 'Chưa nhận'; // Hoặc PENDING, PROCESSING, etc.
+
+    // Phương thức thanh toán
+    const PAYMENT_CASH = 'Tiền mặt';
+    const PAYMENT_BANK = 'Ngân Hàng';
+    const PAYMENT_MOMO = 'Momo';
 
     protected $fillable = [
         'customer_id',
-        'order_date',
         'total_amount',
-        'shipping_fee' => 0,
-        'discount_amount' => 0,
+        'shipping_fee',
+        'discount_amount',
         'shipping_province',
         'shipping_district',
         'shipping_ward',
         'shipping_street',
-        'status' => 'Chưa nhận',
-        'payment_method'
+        'status',
+        'payment_method',
     ];
 
     public function customer()
