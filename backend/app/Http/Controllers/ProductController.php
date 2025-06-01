@@ -61,7 +61,20 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = Product::find($id);
+
+        if (!$product) {
+            return response()->json([
+                'success' => false,
+                'message' => "ID:$id không tồn tại trong CSDL!"
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $product,
+            'message' => 'Lấy thành công!'
+        ]);
     }
 
     /**

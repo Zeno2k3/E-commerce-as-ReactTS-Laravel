@@ -11,7 +11,7 @@ class OrderDetailReqest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,28 @@ class OrderDetailReqest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'order_id' => 'required|integer|exists:orders,id',
+            'product_id' => 'required|integer|exists:products,id',
+            'quantity' => 'required|integer'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'order_id' => ':attribute là bắt buộc',
+            'order_id.exists' => ':attribute không tồn tại trong hệ thống',
+            'product_id' => ':attribute là bắt buộc',
+            'product_id.exists' => ':attribute không tồn tại trong hệ thống',
+            'quantity' => ':attribute là bắt buộc'
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'order_id' => 'ID đơn hàng',
+            'product_id' => 'ID sản phẩm',
+            'quantity' => 'Số lượng sản phẩm'
         ];
     }
 }

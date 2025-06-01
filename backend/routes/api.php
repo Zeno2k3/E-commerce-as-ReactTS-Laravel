@@ -9,6 +9,7 @@ use App\Http\Controllers\ColorController;
 use App\Http\Controllers\CustomerVoucherController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderDetailsController;
 use App\Http\Controllers\SizeController;
 use App\Models\CustomerVoucher;
 use App\Models\Favorite;
@@ -27,7 +28,11 @@ Route::apiResource('categories', CategoryController::class);
 Route::get('categories/{category}/products', [CategoryController::class, 'getProduct']);
 
 Route::apiResource('vouchers', VoucherController::class);
+
 Route::apiResource('colors', ColorController::class);
 Route::apiResource('sizes', SizeController::class);
+
 Route::apiResource('orders', OrderController::class);
+Route::apiResource('order_detail', OrderDetailsController::class);
+
 Route::apiResource('address', AddressController::class);

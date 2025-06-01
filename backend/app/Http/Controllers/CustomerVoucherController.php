@@ -37,10 +37,10 @@ class CustomerVoucherController extends Controller
             ], 404);
         }
 
-        $voucher = $customerbyID->vouchers()->get();
+        $vouchers = $customerbyID->vouchers()->get();
         return response()->json([
             'success' => true,
-            'data' => $voucher,
+            'data' => $vouchers,
             'message' => "Tất cả vocher đã lấy thành công."
         ]);
     }

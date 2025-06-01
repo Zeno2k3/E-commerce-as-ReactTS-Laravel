@@ -59,10 +59,10 @@ class FavoriteController extends Controller
             ], 404);
         }
 
-        $ProductFavorite = $customerbyID->favorites()->get();
+        $ProductFavorites = $customerbyID->favorites()->get();
         return response()->json([
             'success' => true,
-            'data' => $ProductFavorite,
+            'data' => $ProductFavorites,
             'message' => "Tất cả sản phẩm đã lấy thành công."
         ]);
     }

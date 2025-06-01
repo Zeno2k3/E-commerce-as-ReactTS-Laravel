@@ -33,7 +33,7 @@ class Product extends Model
     }
     public function orders()
     {
-        return $this->belongsToMany(Order::class)->using(OrderDetail::class);
+        return $this->belongsToMany(Order::class, 'order_details')->using(OrderDetail::class);
     }
     public function colors()
     {
