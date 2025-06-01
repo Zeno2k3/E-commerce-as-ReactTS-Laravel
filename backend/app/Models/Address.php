@@ -23,6 +23,7 @@ class Address extends Model
         'property_type',
         'is_default',
     ];
+
     public function customer()
     {
         return $this->belongsTo(Customer::class);

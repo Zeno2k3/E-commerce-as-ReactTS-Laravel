@@ -9,18 +9,14 @@ class Image extends Model
 {
     use HasFactory;
     public $table = 'images';
+
     protected $fillable = [
-        'image',
-        'color_id',
-        'product_id'
+        'url',
+        'product_color_id'
     ];
 
     public function product_color()
     {
-        return $this->belongsTo(ProductColor::class, 'color_id');
-    }
-    public function product()
-    {
-        return $this->belongsTo(Product::class, "product_id");
+        return $this->belongsTo(ProductColor::class, 'product_color_id');
     }
 }

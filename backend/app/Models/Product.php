@@ -21,8 +21,6 @@ class Product extends Model
         'discount_price',
         'category_id',
         'banner',
-        'created_at',
-        'updated_at',
     ];
 
     public function category()

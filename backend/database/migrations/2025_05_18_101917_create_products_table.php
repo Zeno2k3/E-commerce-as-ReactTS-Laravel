@@ -37,7 +37,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->foreignId('color_id')->constrained('colors')->onDelete('cascade'); // Đã sửa: references('id')->on('colors')
-            $table->unique(['product_id', 'color_id']); // Đặt khóa chính sau khi khai báo cột
+            $table->integer('quantity');
+            $table->unique(['product_id', 'color_id']); 
             $table->timestamps();
         });
 
