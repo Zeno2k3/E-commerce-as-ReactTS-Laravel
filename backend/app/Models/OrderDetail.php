@@ -10,8 +10,6 @@ class OrderDetail extends Model
     use HasFactory;
 
     public $table = 'order_details';
-    protected $primaryKey = ['product_id', 'order_id'];
-    public $incrementing = false; // không tự động tăng
 
     protected $fillable = [
         'order_id',

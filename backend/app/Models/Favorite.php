@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Favorite extends Model
 {
     public $table = 'favorites';
-    
+
     protected $fillable = [
         'customer_id',
         'product_id',
     ];
 
-    public function user()
+    public function customer()
     {
         return $this->belongsTo(Customer::class, 'customer_id');
     }

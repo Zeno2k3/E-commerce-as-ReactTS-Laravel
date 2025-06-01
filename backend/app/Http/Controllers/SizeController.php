@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SizeRequest;
-use App\Models\ProductSize;
+use App\Models\Size;
 use Illuminate\Http\Request;
 
 class SizeController extends Controller
@@ -13,7 +13,7 @@ class SizeController extends Controller
      */
     public function index()
     {
-        $sizes = ProductSize::all();
+        $sizes = Size::all();
 
         return response()->json([
             'success' => true,
@@ -35,7 +35,7 @@ class SizeController extends Controller
      */
     public function store(SizeRequest $request)
     {
-        $size = new ProductSize;
+        $size = new Size;
         $size->fill($request->all());
 
         $size->save();
@@ -72,7 +72,7 @@ class SizeController extends Controller
      */
     public function destroy(string $id)
     {
-        $size = ProductSize::find($id);
+        $size = Size::find($id);
         if (!$size) {
             return response()->json([
                 'success' => false,

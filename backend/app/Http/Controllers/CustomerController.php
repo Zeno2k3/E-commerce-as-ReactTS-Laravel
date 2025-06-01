@@ -9,9 +9,6 @@ use App\Http\Resources\AddressResource;
 
 class CustomerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $customers = Customer::all();
@@ -62,10 +59,5 @@ class CustomerController extends Controller
     public function getAddresses(Customer $customer)
     {
         return $customer->addresses();
-    }
-
-    public function getVouchers(Customer $customer)
-    {
-        return $customer->vouchers();
     }
 }

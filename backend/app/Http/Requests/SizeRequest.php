@@ -22,7 +22,7 @@ class SizeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name_size' => 'required|string|regex:/^[A-Z0-9]+$/|unique:product_sizes,name_size'
+            'name_size' => 'required|string|regex:/^[A-Z0-9]+$/|unique:sizes,name_size'
         ];
     }
 

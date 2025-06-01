@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ColorRequest;
 use Illuminate\Http\JsonResponse;
-use App\Models\ProductColor;
+use App\Models\Color;
+use Storage;
 
 class ColorController extends Controller
 {
     public function index()
     {
-        $productColor = ProductColor::all();
+        $color = Color::all();
         return response()->json([
             "success" => true,
-            'data' => $productColor,
+            'data' => $color,
             'message' => 'Lấy danh sách danh mục thành công',
         ]);
     }
@@ -35,13 +36,13 @@ class ColorController extends Controller
         $validatedData = $request->validated();
         $imagePath = null;
 
-        if ($request->hasFile('image_color')) {
-            $imagePath = $request->file('image_color')->store('images/colors', 'public');
+        if ($request->hasFile('color_image')) {
+            $imagePath = $request->file('color_image')->store('images/colors', 'public');
         }
 
-        $color = ProductColor::create([
-            'name_color' => $validatedData['name_color'],
-            'image_color' => $imagePath,
+        $color = Color::create([
+            'color_name' => $validatedData['color_name'],
+            'color_image' => $imagePath,
         ]);
 
         return response()->json([
@@ -65,7 +66,7 @@ class ColorController extends Controller
      */
     public function update(ColorRequest $request, string $id)
     {
-        $color = ProductColor::find($id);
+        $color = Color::find($id);
 
         if (!$color) {
             return response()->json([
@@ -74,11 +75,11 @@ class ColorController extends Controller
             ], 404);
         }
 
-        if ($request->filled('name_color')) {
-            $color->name_color = $request->name_color;
+        if ($request->filled('color_name')) {
+            $color->color_name = $request->color_name;
         }
-        if ($request->filled('image_color')) {
-            $color->image_color = $request->image_color;
+        if ($request->filled('color_image')) {
+            $color->color_image = $request->color_image;
         }
 
         if ($color->isDirty()) {
@@ -101,7 +102,7 @@ class ColorController extends Controller
      */
     public function destroy(string $id)
     {
-        $color = ProductColor::find($id);
+        $color = Color::find($id);
 
         if (!$color) {
             return response()->json([
@@ -110,6 +111,7 @@ class ColorController extends Controller
             ], 404);
         }
         $color->delete();
+        Storage::delete($color['color_image']);
         return response()->json([
             'success' => true,
             'message' => 'Color đã xóa',

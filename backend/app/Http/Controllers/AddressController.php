@@ -60,9 +60,6 @@ class AddressController extends Controller
                 ]
             ], 409); 
         }
-
-
-
         $address = new Address($request->all());
         $address->save();
         return response()->json([
