@@ -33,41 +33,35 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        // try {
-        //     // Tạo sản phẩm với dữ liệu (trừ banner)
-        //     $productData = $request->except('banner');
-        //     $product = Product::create($productData);
-
-        //     $bannerPath = null;
-
-        //     // Xử lý banner image
-        //     if ($request->hasFile('banner')) {
-        //         // Case 1: File upload
-        //         $bannerPath = $this->handleFileUpload($request->file('banner'));
-
-        //     } elseif ($request->filled('banner') && filter_var($request->banner, FILTER_VALIDATE_URL)) {
-        //         // Case 2: URL image
-        //         $bannerPath = $this->handleImageUrl($request->banner);
-        //     }
-
-        //     // Cập nhật banner path nếu có
-        //     if ($bannerPath) {
-        //         $product->update(['banner' => $bannerPath]);
-        //     }
-
-        //     return response()->json([
-        //         'success' => true,
-        //         'data' => $product->fresh(), // Reload để lấy dữ liệu mới nhất
-        //         'message' => 'Thêm sản phẩm thành công',
-        //     ], 201);
-        // } catch (\Exception $e) {
-        //     return response()->json([
-        //         'success' => false,
-        //         'message' => 'Có lỗi xảy ra khi thêm sản phẩm',
-        //         'error' => $e->getMessage(),
-        //     ], 500);
-        // }
-         
+        try {
+            // Tạo sản phẩm với dữ liệu (trừ banner)
+            $productData = $request->except('banner');
+            $product = Product::create($productData);
+            $bannerPath = null;
+            // Xử lý banner image
+            if ($request->hasFile('banner')) {
+                // Case 1: File upload
+                $bannerPath = $this->handleFileUpload($request->file('banner'));
+            } elseif ($request->filled('banner') && filter_var($request->banner, FILTER_VALIDATE_URL)) {
+                // Case 2: URL image
+                $bannerPath = $this->handleImageUrl($request->banner);
+            }
+            // Cập nhật banner path nếu có
+            if ($bannerPath) {
+                $product->update(['banner' => $bannerPath]);
+            }
+            return response()->json([
+                'success' => true,
+                'data' => $product->fresh(), // Reload để lấy dữ liệu mới nhất
+                'message' => 'Thêm sản phẩm thành công',
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Có lỗi xảy ra khi thêm sản phẩm',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 
     /**

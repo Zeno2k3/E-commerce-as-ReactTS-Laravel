@@ -2,16 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class ProductColorSize extends Model
+class ProductColorSize extends Pivot
 {
     use HasFactory;
 
-    public $table = 'product_color_sizes';
-    public $incrementing = false; // Khóa chính không tự động tăng
-    
+    public $table = 'product_color_size';
+
     protected $fillable = [
         'color_id',
         'size_id',
@@ -19,11 +18,11 @@ class ProductColorSize extends Model
         'quantity',
     ];
 
-    public function product_color()
+    public function color()
     {
         return $this->belongsTo(Color::class, 'color_id');
     }
-    public function product_size()
+    public function size()
     {
         return $this->belongsTo(Size::class, 'size_id');
     }

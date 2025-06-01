@@ -10,19 +10,20 @@ class CustomerVoucherController extends Controller
 {
     public function store(CustomerVouchersRequest $request)
     {
-        $customer_voucher = new CustomerVoucher($request->all());
-
-        if (!$customer_voucher->save()) {
+        $validatedData = $request->validated();
+        try {
+            $customerVoucher = CustomerVoucher::create($validatedData);
+            return response()->json([
+                'success' => true,
+                'data' => $customerVoucher,
+                'message' => 'Voucher đã liên kết với Customer thành công!'
+            ], 201);
+        } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Liên kết thất bại !'
-            ], 404);
+                'message' => 'Liên kết voucher thất bại. Vui lòng thử lại.'
+            ], 500);
         }
-        return response()->json([
-            'success' => true,
-            'data' => $customer_voucher,
-            'message' => 'Voucher đã liên kết với Customer!'
-        ], 201);
     }
 
     public function show(string $customerId)

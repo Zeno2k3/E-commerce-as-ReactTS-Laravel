@@ -37,8 +37,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->foreignId('color_id')->constrained('colors')->onDelete('cascade'); // Đã sửa: references('id')->on('colors')
-            $table->integer('quantity');
-            $table->unique(['product_id', 'color_id']); 
+            $table->unique(['product_id', 'color_id']);
             $table->timestamps();
         });
 
@@ -70,7 +69,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_color_size'); // Phụ thuộc vào product_color và sizes
+        Schema::dropIfExists('product_color_size'); // Phụ thuộc vào product và colors và sizes
         Schema::dropIfExists('images');             // Phụ thuộc vào product_color
         Schema::dropIfExists('product_color');      // Phụ thuộc vào products và colors
         Schema::dropIfExists('sizes');              // Bảng cơ bản

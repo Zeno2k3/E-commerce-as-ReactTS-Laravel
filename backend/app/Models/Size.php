@@ -13,8 +13,8 @@ class Size extends Model
         'name_size',
     ];
 
-    // public function product_color_size()
-    // {
-    //     return $this->hasMany(ProductColorSize::class);
-    // }
+    public function productVariants()
+    {
+        return $this->hasMany(ProductColorSize::class, 'size_id');
+    }
 }

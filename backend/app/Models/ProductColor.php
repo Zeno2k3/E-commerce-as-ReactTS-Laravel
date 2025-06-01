@@ -3,27 +3,25 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class ProductColor extends Model
+class ProductColor extends Pivot
 {
     use HasFactory;
-
     public $table = 'product_color';
     protected $fillable = [
         'product_id',
         'color_id',
-        'quantity'
     ];
 
-    public function products()
+    public function product()
     {
         return $this->belongsTo(Product::class, 'product_id');
     }
 
-    public function colors()
+    public function color()
     {
-        return $this->belongsTo(Product::class, 'color_id');
+        return $this->belongsTo(Color::class, 'color_id');
     }
 
     public function images()

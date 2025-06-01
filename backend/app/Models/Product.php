@@ -36,8 +36,13 @@ class Product extends Model
     {
         return $this->belongsToMany(Order::class)->using(OrderDetail::class);
     }
-    // public function productColorSize()
-    // {
-    //     return $this->hasMany(ProductColorSize::class);
-    // }
+    public function colors()
+    {
+        return $this->belongsToMany(Color::class)->using(ProductColor::class);
+    }
+
+    public function productVariants()
+    {
+        return $this->hasMany(ProductColorSize::class, 'product_id');
+    }
 }

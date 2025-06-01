@@ -16,11 +16,11 @@ class Color extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class)->using(Image::class);
+        return $this->belongsToMany(Product::class)->using(ProductColor::class);
     }
 
-    // public function product_color_size()
-    // {
-    //     return $this->hasMany(ProductColorSize::class);
-    // }
+    public function productVariants()
+    {
+        return $this->hasMany(ProductColorSize::class, 'color_id');
+    }
 }
