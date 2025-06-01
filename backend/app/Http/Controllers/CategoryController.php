@@ -94,4 +94,9 @@ class CategoryController extends Controller
     {
         //
     }
+
+    public function getProduct(Category $category)
+    {
+        return $category->products;
+    }
 }

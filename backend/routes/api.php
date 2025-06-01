@@ -20,10 +20,12 @@ Route::get('customers/{customer}/addresses', [CustomerController::class, 'getAdd
 Route::get('customers/{customer}/orders', [CustomerController::class, 'getOrders']);
 
 Route::apiResource('customer_voucher', CustomerVoucherController::class);
-Route::apiResource('favovites', FavoriteController::class);
+Route::apiResource('favorites', FavoriteController::class);
 
 Route::apiResource('products', ProductController::class);
 Route::apiResource('categories', CategoryController::class);
+Route::get('categories/{category}/products', [CategoryController::class, 'getProduct']);
+
 Route::apiResource('vouchers', VoucherController::class);
 Route::apiResource('colors', ColorController::class);
 Route::apiResource('sizes', SizeController::class);

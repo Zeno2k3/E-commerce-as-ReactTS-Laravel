@@ -31,9 +31,7 @@ class ProductRequest extends FormRequest
             'discount_percent'  => 'nullable|numeric',
             'discount_price'    => 'nullable|numeric',
             'category_id'       => 'required|exists:categories,id',
-            'banner'            => 'nullable|string|max:2048',
-            'sizes'             => 'required|array|min:1',
-            'colors'            => 'required|array|min:1',
+            'banner'            => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ];
     }
     public function messages()
@@ -48,10 +46,6 @@ class ProductRequest extends FormRequest
             'banner.image' => 'Tệp tải lên phải là hình ảnh.',
             'banner.mimes' => 'Hình ảnh phải có định dạng jpeg, png, jpg hoặc gif.',
             'banner.max' => 'Kích thước hình ảnh không được vượt quá 2MB.',
-            'sizes' => ':attribute là bắc buộc',
-            'sizes.min' => ':attribute tối thiểu 1 phần tử',
-            'colors' => ':attribute là bắc buộc',
-            'colors.min' => ':attribute tối thiểu 1 phần tử'
         ];
     }
 
@@ -68,8 +62,6 @@ class ProductRequest extends FormRequest
             'discount_price' => 'Giá giảm',
             'category_id' => 'Mã thể loại của sản phẩm',
             'banner' => 'Hình ảnh quảng bá sản phẩm',
-            'sizes' => 'Mảng kích thước',
-            'colors' => 'Mảng màu sắc'
         ];
     }
 }

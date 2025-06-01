@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    public $table = 'products';
-    protected $primaryKey = 'id';
+
     protected $fillable = [
         'product_code',
         'name_product',
@@ -30,7 +29,7 @@ class Product extends Model
 
     public function customers()
     {
-        return $this->belongsToMany(Customer::class)->using(Favorite::class);
+        return $this->belongsToMany(Customer::class, 'favorites')->using(Favorite::class);
     }
     public function orders()
     {
@@ -40,7 +39,6 @@ class Product extends Model
     {
         return $this->belongsToMany(Color::class)->using(ProductColor::class);
     }
-
     public function productVariants()
     {
         return $this->hasMany(ProductColorSize::class, 'product_id');

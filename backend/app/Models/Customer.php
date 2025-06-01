@@ -39,6 +39,6 @@ class Customer extends Model
     }
     public function favorites()
     {
-        return $this->belongsToMany(Product::class)->using(Favorite::class);
+        return $this->belongsToMany(Product::class, 'favorites')->using(Favorite::class);
     }
 }
