@@ -35,7 +35,6 @@ class AddressController extends Controller
      */
     public function store(AddressRequest $request)
     {
-
         // Lấy id customer có trong req
         $customerId = $request['customer_id'];
         // Lấy ra đối tượng trong bảng customer

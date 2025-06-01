@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Favorite extends Model
+class Favorite extends Pivot
 {
     public $table = 'favorites';
 

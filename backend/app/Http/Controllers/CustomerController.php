@@ -58,6 +58,11 @@ class CustomerController extends Controller
 
     public function getAddresses(Customer $customer)
     {
-        return $customer->addresses();
+        return $customer->addresses;
+    }
+
+    public function getOrders(Customer $customer)
+    {
+        return $customer->orders;
     }
 }

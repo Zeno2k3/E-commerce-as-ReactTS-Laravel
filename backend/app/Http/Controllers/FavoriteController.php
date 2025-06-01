@@ -2,17 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CustomerVouchersRequest;
+use App\Http\Requests\FavoriteRequest;
+use App\Models\Favorite;
 use App\Models\Customer;
-use App\Models\CustomerVoucher;
+use Illuminate\Http\Request;
 
-class CustomerVoucherController extends Controller
+class FavoriteController extends Controller
 {
-    public function store(CustomerVouchersRequest $request)
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
-        $customer_voucher = new CustomerVoucher($request->all());
+        //
+    }
 
-        if (!$customer_voucher->save()) {
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(FavoriteRequest $request)
+    {
+        $favorite = new Favorite($request->all());
+
+        if (!$favorite->save()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Liên kết thất bại !'
@@ -20,11 +40,14 @@ class CustomerVoucherController extends Controller
         }
         return response()->json([
             'success' => true,
-            'data' => $customer_voucher,
+            'data' => $favorite,
             'message' => 'Voucher đã liên kết với Customer!'
         ], 201);
     }
 
+    /**
+     * Display the specified resource.
+     */
     public function show(string $customerId)
     {
         $customerbyID = Customer::find($customerId);
@@ -36,11 +59,11 @@ class CustomerVoucherController extends Controller
             ], 404);
         }
 
-        $voucher = $customerbyID->vouchers()->get();
+        $ProductFavorite = $customerbyID->favorites()->get();
         return response()->json([
             'success' => true,
-            'data' => $voucher,
-            'message' => "Tất cả vocher đã lấy thành công."
+            'data' => $ProductFavorite,
+            'message' => "Tất cả sản phẩm đã lấy thành công."
         ]);
     }
 
@@ -55,7 +78,10 @@ class CustomerVoucherController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CustomerVouchersRequest $request, string $id) {}
+    public function update(Request $request, string $id)
+    {
+        //
+    }
 
     /**
      * Remove the specified resource from storage.

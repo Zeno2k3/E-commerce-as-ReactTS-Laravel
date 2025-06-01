@@ -36,10 +36,8 @@ class Product extends Model
     {
         return $this->belongsToMany(Order::class)->using(OrderDetail::class);
     }
-
-    
-    public function productColorSize()
-    {
-        return $this->hasMany(ProductColorSize::class);
-    }
+    // public function productColorSize()
+    // {
+    //     return $this->hasMany(ProductColorSize::class);
+    // }
 }

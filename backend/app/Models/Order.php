@@ -29,14 +29,12 @@ class Order extends Model
         'status',
         'payment_method',
     ];
-
     public function customer()
     {
         return $this->belongsTo(Customer::class, 'customer_id');
     }
-
-    public function orderDetails()
+    public function products()
     {
-        return $this->hasMany(OrderDetail::class);
+        return $this->belongsToMany(Product::class)->using(OrderDetail::class);
     }
 }

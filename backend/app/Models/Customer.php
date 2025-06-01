@@ -24,7 +24,6 @@ class Customer extends Model
         'otp_expires_at' => 'datetime',
     ];
 
-
     // quan hệ
     public function addresses()
     {
