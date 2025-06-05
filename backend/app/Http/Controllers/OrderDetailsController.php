@@ -53,7 +53,7 @@ class OrderDetailsController extends Controller
             ], 404);
         }
 
-        $products = $orderbyID->products()->get();
+        $products = $orderbyID->products()->withPivot('quantity')->get();
         return response()->json([
             'success' => true,
             'data' => $products,

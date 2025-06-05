@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { BarChart3, Box, Home, LayoutDashboard, LogOut, Package, Settings, ShoppingCart, Users } from "lucide-react"
+import { BarChart3, Box, Home, Palette, LayoutDashboard, LogOut, Package, Settings, ShoppingCart, Users } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -27,6 +27,11 @@ const sidebarItems = [
     title: "Danh mục",
     href: "/dashboard/categories",
     icon: Box,
+  },
+  {
+    title: "Màu sắc & Kích thước",
+    href: "/dashboard/attributes",
+    icon: Palette,
   },
   {
     title: "Người dùng",

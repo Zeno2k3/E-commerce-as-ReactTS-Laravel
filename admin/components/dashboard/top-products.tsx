@@ -3,6 +3,8 @@
 import Image from "next/image"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { useEffect, useState } from "react"
+
 
 const topProducts = [
   {
@@ -43,6 +45,19 @@ const topProducts = [
 ]
 
 export function TopProducts() {
+
+  const [product, setProduct] = useState<any[]>([]);
+
+  // useEffect(() => {
+  //   const res = await fetch('http://127.0.0.1:8000/api/products');
+  //   if (!res.ok) throw new Error("Failed to fetch")
+  //   const json = await res.json();
+  // setProduct()
+
+
+  // }, [])
+
+
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat("vi-VN", {
       style: "currency",

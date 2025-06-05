@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Eye, Search } from "lucide-react"
 
@@ -10,75 +10,32 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { OrderType } from "@/types"
 
-const orders = [
-  {
-    id: "ORD-5123",
-    customer: "Nguyễn Văn A",
-    date: "2023-05-20",
-    total: 1250000,
-    status: "delivered",
-    items: 3,
-  },
-  {
-    id: "ORD-5122",
-    customer: "Trần Thị B",
-    date: "2023-05-19",
-    total: 850000,
-    status: "processing",
-    items: 2,
-  },
-  {
-    id: "ORD-5121",
-    customer: "Lê Văn C",
-    date: "2023-05-18",
-    total: 2100000,
-    status: "delivered",
-    items: 5,
-  },
-  {
-    id: "ORD-5120",
-    customer: "Phạm Thị D",
-    date: "2023-05-17",
-    total: 1450000,
-    status: "canceled",
-    items: 4,
-  },
-  {
-    id: "ORD-5119",
-    customer: "Hoàng Văn E",
-    date: "2023-05-16",
-    total: 950000,
-    status: "delivered",
-    items: 2,
-  },
-  {
-    id: "ORD-5118",
-    customer: "Ngô Thị F",
-    date: "2023-05-15",
-    total: 1850000,
-    status: "processing",
-    items: 6,
-  },
-  {
-    id: "ORD-5117",
-    customer: "Đặng Văn G",
-    date: "2023-05-14",
-    total: 750000,
-    status: "delivered",
-    items: 1,
-  },
-  {
-    id: "ORD-5116",
-    customer: "Vũ Thị H",
-    date: "2023-05-13",
-    total: 1650000,
-    status: "canceled",
-    items: 3,
-  },
-]
 
 export function OrdersTable() {
+  const [orders, setOrder] = useState<Array<OrderType>>([]);
+  useEffect(() => {
+
+
+    const fecthOrder = async () => {
+      try {
+        const res = await fetch('http://127.0.0.1:8000/api/orders');
+        if (!res.ok) {
+          throw new Error("Failed to fetch")
+        }
+        const jsonData = await res.json();
+        setOrder(jsonData.data);
+      } catch (error) {
+        console.error("Error fetching Categries:", error)
+      }
+    }
+    fecthOrder();
+
+  }, [])
+
+
+
   const [searchTerm, setSearchTerm] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
 
@@ -110,8 +67,7 @@ export function OrdersTable() {
 
   const filteredOrders = orders.filter((order) => {
     const matchesSearch =
-      order.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      order.customer.toLowerCase().includes(searchTerm.toLowerCase())
+      order.id || order.customer_id.toLowerCase().includes(searchTerm.toLowerCase())
     const matchesStatus = statusFilter === "all" || order.status === statusFilter
     return matchesSearch && matchesStatus
   })
@@ -174,10 +130,10 @@ export function OrdersTable() {
                 filteredOrders.map((order) => (
                   <TableRow key={order.id}>
                     <TableCell className="font-medium">{order.id}</TableCell>
-                    <TableCell>{order.customer}</TableCell>
-                    <TableCell>{formatDate(order.date)}</TableCell>
-                    <TableCell>{order.items} sản phẩm</TableCell>
-                    <TableCell>{formatCurrency(order.total)}</TableCell>
+                    <TableCell>{order.customer_id}</TableCell>
+                    <TableCell>{formatDate(order.created_at)}</TableCell>
+                    <TableCell>{order.shipping_province} sản phẩm</TableCell>
+                    <TableCell>{formatCurrency(order.shipping_fee)}</TableCell>
                     <TableCell>{getStatusBadge(order.status)}</TableCell>
                     <TableCell className="text-right">
                       <Button variant="ghost" size="icon" asChild>

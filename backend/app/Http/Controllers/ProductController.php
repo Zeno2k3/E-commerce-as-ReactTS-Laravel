@@ -37,7 +37,7 @@ class ProductController extends Controller
             $validatedData = $request->validated();
             $imagePath = null;
             if ($request->hasFile('banner')) {
-                $imagePath = $request->file('banner')->store('images/product', 'public');
+                $imagePath = $request->file('banner')->store('storage/images/product', 'public');
             }
             $validatedData['banner'] = $imagePath;
             $product = new Product($validatedData);

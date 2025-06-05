@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use App\Http\Requests\CustomerRequest;
-use App\Http\Resources\AddressResource;
 
 
 class CustomerController extends Controller

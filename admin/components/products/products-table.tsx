@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Edit, MoreHorizontal, Search, Trash } from "lucide-react"
@@ -29,78 +29,14 @@ import {
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-
-const products = [
-  {
-    id: "1",
-    name: "Áo sơ mi nam dài tay",
-    image: "/placeholder.svg?height=50&width=50",
-    price: 350000,
-    stock: 45,
-    category: "Áo nam",
-  },
-  {
-    id: "2",
-    name: "Quần jean nữ ống rộng",
-    image: "/placeholder.svg?height=50&width=50",
-    price: 450000,
-    stock: 32,
-    category: "Quần nữ",
-  },
-  {
-    id: "3",
-    name: "Áo khoác bomber unisex",
-    image: "/placeholder.svg?height=50&width=50",
-    price: 650000,
-    stock: 18,
-    category: "Áo khoác",
-  },
-  {
-    id: "4",
-    name: "Váy liền thân công sở",
-    image: "/placeholder.svg?height=50&width=50",
-    price: 550000,
-    stock: 27,
-    category: "Váy đầm",
-  },
-  {
-    id: "5",
-    name: "Áo thun nam cổ tròn",
-    image: "/placeholder.svg?height=50&width=50",
-    price: 250000,
-    stock: 64,
-    category: "Áo nam",
-  },
-  {
-    id: "6",
-    name: "Quần tây nam công sở",
-    image: "/placeholder.svg?height=50&width=50",
-    price: 450000,
-    stock: 38,
-    category: "Quần nam",
-  },
-  {
-    id: "7",
-    name: "Áo sơ mi nữ tay dài",
-    image: "/placeholder.svg?height=50&width=50",
-    price: 320000,
-    stock: 42,
-    category: "Áo nữ",
-  },
-  {
-    id: "8",
-    name: "Áo khoác denim nữ",
-    image: "/placeholder.svg?height=50&width=50",
-    price: 580000,
-    stock: 15,
-    category: "Áo khoác",
-  },
-]
+import { CategoryType, ProductType } from "@/types"
 
 export function ProductsTable() {
   const [searchTerm, setSearchTerm] = useState("")
   const [categoryFilter, setCategoryFilter] = useState("all")
   const [productToDelete, setProductToDelete] = useState<string | null>(null)
+  const [data, setData] = useState<Array<ProductType>>([])
+  const [categories, setCategories] = useState<Array<CategoryType>>([])
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat("vi-VN", {
@@ -110,11 +46,43 @@ export function ProductsTable() {
     }).format(value)
   }
 
-  const categories = ["Áo nam", "Áo nữ", "Quần nam", "Quần nữ", "Áo khoác", "Váy đầm"]
+  useEffect(() => {
+    const fecthData = async () => {
+      try {
+        const res = await fetch('http://127.0.0.1:8000/api/products')
+        if (!res.ok) {
+          throw new Error("Failed to fetch")
+        }
+        const jsonData = await res.json();
+        console.log("Products JSON:", jsonData);
+        setData(jsonData.data)
+      } catch (error) {
+        console.error("Error fetching Categries:", error)
+      }
+    }
 
-  const filteredProducts = products.filter((product) => {
-    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCategory = categoryFilter === "all" || product.category === categoryFilter
+    fecthData();
+  }, [])
+
+  useEffect(() => {
+    const fecthData = async () => {
+      try {
+        const res = await fetch('http://127.0.0.1:8000/api/categories')
+        if (!res.ok) {
+          throw new Error("Failed to fetch")
+        }
+        const jsonData = await res.json();
+        setCategories(jsonData.data)
+      } catch (error) {
+        console.error("Error fetching Categries:", error)
+      }
+    }
+    fecthData();
+  }, []);
+
+  const filteredProducts = data.filter((product) => {
+    const matchesSearch = product.name_product.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchesCategory = categoryFilter === "all" || product.category_id === categoryFilter
     return matchesSearch && matchesCategory
   })
 
@@ -152,8 +120,8 @@ export function ProductsTable() {
               <SelectContent>
                 <SelectItem value="all">Tất cả danh mục</SelectItem>
                 {categories.map((category) => (
-                  <SelectItem key={category} value={category}>
-                    {category}
+                  <SelectItem key={category.id} value={category.name}>
+                    {category.name}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -165,6 +133,7 @@ export function ProductsTable() {
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[80px]">Ảnh</TableHead>
+                <TableHead>Mã sản phẩm</TableHead>
                 <TableHead>Tên sản phẩm</TableHead>
                 <TableHead>Danh mục</TableHead>
                 <TableHead>Giá</TableHead>
@@ -185,29 +154,29 @@ export function ProductsTable() {
                     <TableCell>
                       <div className="relative h-12 w-12 overflow-hidden rounded-md">
                         <Image
-                          src={product.image || "/placeholder.svg"}
-                          alt={product.name}
+                          src={`/${product.banner}`}
+                          alt={product.name_product}
                           fill
                           className="object-cover"
                         />
                       </div>
                     </TableCell>
-                    <TableCell className="font-medium">{product.name}</TableCell>
+                    <TableCell className="font-medium">{product.product_code}</TableCell>
+                    <TableCell className="font-medium">{product.name_product}</TableCell>
                     <TableCell>
-                      <Badge variant="outline">{product.category}</Badge>
+                      <Badge variant="outline">{product.category_id}</Badge>
                     </TableCell>
-                    <TableCell>{formatCurrency(product.price)}</TableCell>
+                    <TableCell>{formatCurrency(product.original_price)}</TableCell>
                     <TableCell>
                       <span
-                        className={`font-medium ${
-                          product.stock < 20
-                            ? "text-red-500"
-                            : product.stock < 50
-                              ? "text-yellow-500"
-                              : "text-green-500"
-                        }`}
+                        className={`font-medium ${product.discount_percent < 20
+                          ? "text-red-500"
+                          : product.discount_percent < 50
+                            ? "text-yellow-500"
+                            : "text-green-500"
+                          }`}
                       >
-                        {product.stock}
+                        {product.discount_percent}
                       </span>
                     </TableCell>
                     <TableCell className="text-right">
